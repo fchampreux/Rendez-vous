@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Leads Imports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>First name</th>
+      <th>Language</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Url</th>
+      <th>Note</th>
+      <th>Image url</th>
+      <th>Role</th>
+      <th>Company</th>
+      <th>From date</th>
+      <th>Job location</th>
+      <th>Job desc</th>
+      <th>Industry</th>
+      <th>Cy number</th>
+      <th>Cy street</th>
+      <th>Cy address info</th>
+      <th>Zip</th>
+      <th>Pobox</th>
+      <th>Cy state</th>
+      <th>Cy country</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leads_imports.each do |leads_import| %>
+      <tr>
+        <td><%= leads_import.title %></td>
+        <td><%= leads_import.name %></td>
+        <td><%= leads_import.first_name %></td>
+        <td><%= leads_import.language %></td>
+        <td><%= leads_import.description %></td>
+        <td><%= leads_import.location %></td>
+        <td><%= leads_import.email %></td>
+        <td><%= leads_import.phone %></td>
+        <td><%= leads_import.url %></td>
+        <td><%= leads_import.note %></td>
+        <td><%= leads_import.image_url %></td>
+        <td><%= leads_import.role %></td>
+        <td><%= leads_import.company %></td>
+        <td><%= leads_import.from_date %></td>
+        <td><%= leads_import.job_location %></td>
+        <td><%= leads_import.job_desc %></td>
+        <td><%= leads_import.industry %></td>
+        <td><%= leads_import.cy_number %></td>
+        <td><%= leads_import.cy_street %></td>
+        <td><%= leads_import.cy_address_info %></td>
+        <td><%= leads_import.zip %></td>
+        <td><%= leads_import.pobox %></td>
+        <td><%= leads_import.cy_state %></td>
+        <td><%= leads_import.cy_country %></td>
+        <td><%= link_to 'Show', leads_import %></td>
+        <td><%= link_to 'Edit', edit_leads_import_path(leads_import) %></td>
+        <td><%= link_to 'Destroy', leads_import, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leads import', new_leads_import_path %>

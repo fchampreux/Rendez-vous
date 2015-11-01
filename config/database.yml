@@ -1,0 +1,23 @@
+# ODQ environments
+# PostgreSQL
+development:
+  host: localhost 
+  adapter: postgresql
+  encoding: unicode
+  database: odq_rdv_dev
+  username: odq_rdv
+  password: odq_rdv
+  schema_search_path: "odq_rdv"
+  pool: 5
+
+# TEST environment
+# PostgreSQL
+test:
+  host: localhost 
+  adapter: postgresql
+  encoding: unicode
+  database: odq_rdv_test
+  username: odq_rdv
+  password: odq_rdv
+  schema_search_path: "odq_rdv"
+  pool: 5

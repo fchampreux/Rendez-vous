@@ -1,0 +1,113 @@
+<%= form_for(@leads_import) do |f| %>
+  <% if @leads_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leads_import.errors.count, "error") %> prohibited this leads_import from being saved:</h2>
+
+      <ul>
+      <% @leads_import.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :language %><br>
+    <%= f.text_field :language %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :URL %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :image_URL %><br>
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.text_field :role %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :from_date %><br>
+    <%= f.text_field :from_date %>
+  </div>
+  <div class="field">
+    <%= f.label :job_location %><br>
+    <%= f.text_field :job_location %>
+  </div>
+  <div class="field">
+    <%= f.label :job_desc %><br>
+    <%= f.text_area :job_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :industry %><br>
+    <%= f.text_field :industry %>
+  </div>
+  <div class="field">
+    <%= f.label :cy_number %><br>
+    <%= f.text_field :cy_number %>
+  </div>
+  <div class="field">
+    <%= f.label :cy_street %><br>
+    <%= f.text_field :cy_street %>
+  </div>
+  <div class="field">
+    <%= f.label :cy_address_info %><br>
+    <%= f.text_field :cy_address_info %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :PObox %><br>
+    <%= f.text_field :pobox %>
+  </div>
+  <div class="field">
+    <%= f.label :cy_state %><br>
+    <%= f.text_field :cy_state %>
+  </div>
+  <div class="field">
+    <%= f.label :cy_country %><br>
+    <%= f.text_field :cy_country %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

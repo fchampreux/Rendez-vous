@@ -1,0 +1,1 @@
+json.extract! @leads_import, :id, :title, :name, :first_name, :language, :description, :location, :email, :phone, :URL, :note, :image_URL, :role, :company, :from_date, :job_location, :job_desc, :industry, :cy_number, :cy_street, :cy_address_info, :zip, :PObox, :cy_state, :cy_country, :created_at, :updated_at
