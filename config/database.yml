@@ -4,10 +4,10 @@ development:
   host: localhost 
   adapter: postgresql
   encoding: unicode
-  database: odq_rdv_dev
-  username: odq_rdv
-  password: odq_rdv
-  schema_search_path: "odq_rdv"
+  database: rdv_app_dev
+  username: rdv_app
+  password: rdv_app
+  schema_search_path: "rdv_app"
   pool: 5
 
 # TEST environment
@@ -16,8 +16,8 @@ test:
   host: localhost 
   adapter: postgresql
   encoding: unicode
-  database: odq_rdv_test
-  username: odq_rdv
-  password: odq_rdv
-  schema_search_path: "odq_rdv"
+  database: rdv_app_test
+  username: rdv_app
+  password: rdv_app
+  schema_search_path: "rdv_app"
   pool: 5

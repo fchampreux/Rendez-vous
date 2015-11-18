@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.3.0'
 gem 'bootstrap-datepicker-rails', '~> 1.4.0'
 gem 'will_paginate', '~> 3.0.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
-gem 'selenium-webdriver', '~> 2.47.0'
+
 gem 'sequenced', '~> 2.0.0'
 gem 'd3_rails'
  
@@ -24,14 +24,15 @@ end
 
 # gem for dev and test only
 group :development, :test do
-gem 'annotate', '~> 2.6.5'
-gem 'rspec-rails', '~> 3.3.0'
-gem 'capybara', '~> 2.5.0'
-gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'annotate', '~> 2.6.5'
+  gem 'rspec-rails', '~> 3.3.0'
+  gem 'capybara', '~> 2.5.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'shoulda-matchers'
   gem 'pg'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  #gem 'selenium-webdriver', '~> 2.47.0'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
