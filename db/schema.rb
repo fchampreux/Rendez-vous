@@ -10,8 +10,9 @@ class CreateBasicTables < ActiveRecord::Migration
       t.string   :website       , limit: 100
       t.string   :email         , limit: 100
       t.string   :phone         , limit: 100
-      t.text     :categories    , limit: 100
+      t.text     :categories    , limit: 100		
       t.integer  :status_id     , null: false, default: 0
+      t.integer  :legal_id      , null: false, default: 0
       t.integer  :owner_id      , null: false
       t.datetime   :created_at,      null: false
       t.datetime   :updated_at,      null: false
@@ -21,6 +22,7 @@ class CreateBasicTables < ActiveRecord::Migration
     
     create_table :people do |t|
       t.string   :name          , limit: 100, null: false, index: true
+      t.integer  :title_id	
       t.text     :description   , limit: 4000
       t.text     :address       , limit: 1000
       t.string   :zip           , limit: 20
@@ -93,6 +95,7 @@ class CreateBasicTables < ActiveRecord::Migration
     end
     
     create_table :items do |t|
+      t.string   :code          , limit: 100, null: false, index: true
       t.string   :name          , limit: 100, null: false, index: true
       t.text     :description   , limit: 4000
       t.text     :resource      , limit: 1000
@@ -107,8 +110,17 @@ class CreateBasicTables < ActiveRecord::Migration
     
     create_table :leads_imports do |t|
       t.string   :title
-      t.string   :name
       t.string   :first_name
+      t.string   :mid_name
+      t.string   :name          , limit: 100, null: false, index: true
+      t.text     :description   , limit: 4000
+      t.text     :address       , limit: 1000
+      t.string   :zip           , limit: 20
+      t.string   :city          , limit: 100
+      t.string   :website       , limit: 100
+      t.string   :email         , limit: 100
+      t.string   :phone         , limit: 100
+      t.text     :categories    , limit: 100
       t.string   :language
       t.text     :description
       t.string   :location
