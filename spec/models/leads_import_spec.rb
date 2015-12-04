@@ -18,18 +18,18 @@
 #  location     :string(100)
 #  source_url   :string(100)
 #  image_url    :string(100)
-#  company      :string(100)
-#  cy_desc      :text
-#  cy_address   :text
-#  cy_zip       :string(20)
-#  cy_city      :string(100)
-#  cy_state     :string(100)
-#  cy_country   :string(100)
-#  cy_website   :string(100)
-#  cy_email     :string(100)
-#  cy_phone     :string(100)
-#  cy_type      :string(100)
-#  cy_legal     :string(100)
+#  organisation :string(100)
+#  org_desc     :text
+#  org_address  :text
+#  org_zip      :string(20)
+#  org_city     :string(100)
+#  org_state    :string(100)
+#  org_country  :string(100)
+#  org_website  :string(100)
+#  org_email    :string(100)
+#  org_phone    :string(100)
+#  org_type     :string(100)
+#  org_legal    :string(100)
 #  role         :string(100)
 #  from_date    :string(20)
 #  job_location :string(100)
@@ -41,6 +41,9 @@
 #  note         :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  created_by   :string(100)      not null
+#  updated_by   :string(100)      not null
+#  session_id   :string(100)      not null
 #
 
 require 'rails_helper'

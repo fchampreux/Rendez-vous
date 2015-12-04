@@ -17,6 +17,10 @@
 #  owner_id    :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  created_by  :string(100)      not null
+#  updated_by  :string(100)      not null
+#  session_id  :string(100)      not null
+#  code        :string(100)
 #
 
 class Project < ActiveRecord::Base

@@ -19,13 +19,11 @@
 #  owner_id    :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  created_by  :string(100)      not null
+#  updated_by  :string(100)      not null
+#  session_id  :string(100)      not null
+#  code        :string(100)
 #
 
 class Organisation < ActiveRecord::Base
-
-  validates :name, presence: true, length: { minimum: 5  }
-  validates :owner_id, presence: true
-  validates :status_id, presence: true
-  validates :legal_id, presence: true
-  
 end
