@@ -26,4 +26,13 @@
 #
 
 class Organisation < ActiveRecord::Base
+
+  validates :name,       presence: true, length: { minimum: 5 }
+  validates :status_id,  presence: true
+  validates :legal_id,   presence: true
+  validates :owner_id,   presence: true
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
+  validates :session_id, presence: true
+
 end
