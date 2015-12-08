@@ -19,4 +19,19 @@
 #
 
 class OrganisationsProject < ActiveRecord::Base
+
+### validations
+  validates :started_at, presence: true
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		# helps retrieving the parameter
+    validates :status, presence: true
+  belongs_to :organisation_role, :class_name => "Parameter", :foreign_key => "organisation_role_id"		# helps retrieving the parameter
+    validates :organisation_role, presence: true
+  belongs_to :project_role, :class_name => "Parameter", :foreign_key => "project_role_id"		# helps retrieving the parameter
+    validates :project_role, presence: true
+  belongs_to :organisation
+    validates :project, presence: true
+  belongs_to :project
+    validates :organisation, presence: true
 end
