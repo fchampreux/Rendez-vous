@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "Seeding users"
-if User.count == 0
-  puts "Creating admin user"
-  User.create(id: 0, login: 'Admin', password: 'DQAdmin', password_confirmation: 'DQAdmin', is_admin: 1, last_name: 'Administrator', first_name: 'Rendez-vous', description: 'Admin user', active_from: '2000-01-01', active_to: '2100-01-01', created_by: 'Rake', updated_by: 'Rake', created_at: '2000-01-01', updated_at: '2000-01-01', email: 'support@opendataquality.org')
-end
+#if User.count == 0
+#  puts "Creating admin user"
+#  User.create(id: 0, login: 'Admin', password: 'DQAdmin', password_confirmation: 'DQAdmin', is_admin: 1, last_name: 'Administrator', first_name: 'Rendez-vous', description: 'Admin user', active_from: '2000-01-01', active_to: '2100-01-01', created_by: 'Rake', updated_by: 'Rake', created_at: '2000-01-01', updated_at: '2000-01-01', email: 'support@opendataquality.org')
+#end
 
 puts "Seeding parameters lists"
 if ParametersList.count==0

@@ -15,6 +15,7 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'sequenced', '~> 2.0.0'
 gem 'd3_rails'
+gem 'devise'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
