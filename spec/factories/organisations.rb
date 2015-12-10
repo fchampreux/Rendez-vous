@@ -32,6 +32,7 @@ FactoryGirl.define do
     status_id  0
     legal_id   0
     owner_id   0
+    country_id 0
     created_by "Fred"
     updated_by "Fred"
     session_id "Run01"
