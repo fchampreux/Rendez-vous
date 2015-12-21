@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+#root definition
+  root to: "welcome#home"
+
   devise_for :users
   resources :leads_imports
   # The priority is based upon order of creation: first created -> highest priority.

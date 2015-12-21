@@ -1,0 +1,86 @@
+<% provide(:title, t('Home')) %>
+
+<% content_for :page_heading do %>
+  <%= @playground_measured.name %>: <%= t('Dashboard')%>
+<% end %>
+
+<h2><%= @current_user.last_name %></h2>
+
+  <div id="measures">
+    <%= render partial: "shared/render_charts", locals: {this_object: @playground_measured} %>
+  </div>  
+<hr/>
+
+<h3><%= t('Top10') %></h3>
+
+<div class="container">
+  <div class="col-md-4">
+  <h4><%= t('MainRisk') %></h4>
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th><%= t('Code') %></th>
+      <th><%= t('Name') %></th>
+      <th><%= t('Status') %></th>
+    </tr>
+  
+  <% @business_rules_index.each do |business_rule| %>
+    <tr>
+      <td><%= image_tag(index_audit_tag_for(business_rule), :alt => "Quality hit") %></td>
+      <td class="col_narrow"><%= link_to business_rule.code, business_rule %></td>
+      <td><%= business_rule.name %></td>
+      <td><%= business_rule.status.name %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+
+  <div class="col-md-4">
+  <h4><%= t('RecentUpdates') %></h4>
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th><%= t('Code') %></th>
+      <th><%= t('Name') %></th>
+      <th><%= t('UpdatedAt') %></th>
+    </tr>
+  
+  <% @business_rules_updated.each do |business_rule| %>
+    <tr>
+      <td><%= image_tag(index_audit_tag_for(business_rule), :alt => "Quality hit") %></td>
+      <td class="col_narrow"><%= link_to business_rule.code, business_rule %></td>
+      <td><%= business_rule.name %></td>
+      <td><%= business_rule.updated_at %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+
+  <div class="col-md-4">
+  <%= render partial: "shared/simple_search", locals: {this_path: :root} %>
+
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th><%= t('Code') %></th>
+      <th><%= t('Name') %></th>
+      <th><%= t('Status') %></th>
+    </tr>
+  
+  <% @business_rules_search.each do |business_rule| %>
+    <tr>
+      <td><%= image_tag(index_audit_tag_for(business_rule), :alt => "Quality hit") %></td>
+      <td class="col_narrow"><%= link_to business_rule.code, business_rule %></td>
+      <td><%= business_rule.name %></td>
+      <td><%= business_rule.status.name %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  </div>
+
+</div>
+
+
+
+

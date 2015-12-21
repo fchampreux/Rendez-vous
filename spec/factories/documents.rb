@@ -20,6 +20,14 @@
 
 FactoryGirl.define do
   factory :document do
+    id         0
+    name       "Test Document Rails"
+    description "This is a test document used for unit testing"
+    status_id  0
+    owner_id   0
+    created_by "Fred"
+    updated_by "Fred"
+    session_id "TestRun-01"
     
   end
 

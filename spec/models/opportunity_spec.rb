@@ -23,5 +23,26 @@
 require 'rails_helper'
 
 RSpec.describe Opportunity, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Validations'
+  subject {FactoryGirl.build(:opportunity)}
+  it {should validate_presence_of(:organisation_id)}
+  it {should validate_presence_of(:item_id)}
+  it {should validate_presence_of(:started_at)}
+  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:organisation_role_id)}
+  it {should validate_presence_of(:item_role_id)}
+  it {should validate_presence_of(:owner_id)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)}  
+
+  describe 'It can be created'
+  it 'has a valid factory' do
+    expect(build(:opportunity)).to be_valid
+  end
+  it 'is invalid without a start_date' do
+    expect(build(:opportunity, started_at: nil)).to_not be_valid
+  end
+  
 end

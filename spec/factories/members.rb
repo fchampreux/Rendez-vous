@@ -29,6 +29,14 @@
 
 FactoryGirl.define do
   factory :member do
+    id         0
+    last_name   "Test Member Rails"
+    description "This is a test member used for unit testing"
+    status_id  0
+    owner_id   0
+    created_by "Fred"
+    updated_by "Fred"
+    session_id "TestRun-01"
     
   end
 

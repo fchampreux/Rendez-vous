@@ -20,6 +20,16 @@
 
 FactoryGirl.define do
   factory :items_project do
+    project_id         0
+    item_id       0
+    project_role_id    0
+    item_role_id  0
+    status_id         0
+    owner_id          0
+    started_at "2015-01-01" 
+    created_by "Fred"
+    updated_by "Fred"
+    session_id "TestRun-01"
     
   end
 

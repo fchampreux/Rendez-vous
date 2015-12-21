@@ -22,6 +22,19 @@
 
 FactoryGirl.define do
   factory :opportunity do
+    item_id            0
+    member_id          0
+    organisation_id    0
+    item_role_id            0
+    member_role_id          0
+    organisation_role_id    0
+    note              "This is a test opportunity used for unit testing"
+    status_id          0
+    owner_id           0
+    started_at         "2015-01-01"
+    created_by         "Fred"
+    updated_by         "Fred"
+    session_id         "TestRun-01"
     
   end
 

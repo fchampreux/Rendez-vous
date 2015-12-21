@@ -22,6 +22,15 @@
 
 FactoryGirl.define do
   factory :parameter do
+    id                 0
+    parameters_list_id 0
+    name               "Test parmeter"
+    description        "This is a test parameter used for unit testing"
+    status_id          0
+    owner_id           0
+    created_by         "Fred"
+    updated_by         "Fred"
+    session_id         "TestRun-01"
     
   end
 

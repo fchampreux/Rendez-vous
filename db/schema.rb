@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209144500) do
+ActiveRecord::Schema.define(version: 20151211093312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",       limit: 100,                 null: false
     t.string   "session_id",       limit: 100,                 null: false
     t.boolean  "main_relation",                default: false
+    t.integer  "owner_id",                                     null: false
   end
 
   add_index "actions_documents", ["action_id", "started_at"], name: "actions_documents_idx", using: :btree
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",     limit: 100,                 null: false
     t.string   "session_id",     limit: 100,                 null: false
     t.boolean  "main_relation",              default: false
+    t.integer  "owner_id",                                   null: false
   end
 
   add_index "actions_members", ["action_id", "started_at"], name: "actions_members_idx", using: :btree
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",           limit: 100,                 null: false
     t.string   "session_id",           limit: 100,                 null: false
     t.boolean  "main_relation",                    default: false
+    t.integer  "owner_id",                                         null: false
   end
 
   add_index "actions_organisations", ["action_id", "started_at"], name: "actions_organisations_idx", using: :btree
@@ -117,6 +120,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",      limit: 100,                 null: false
     t.string   "session_id",      limit: 100,                 null: false
     t.boolean  "main_relation",               default: false
+    t.integer  "owner_id",                                    null: false
   end
 
   add_index "actions_projects", ["action_id", "started_at"], name: "actions_projects_idx", using: :btree
@@ -157,6 +161,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",       limit: 100,                 null: false
     t.string   "session_id",       limit: 100,                 null: false
     t.boolean  "main_relation",                default: false
+    t.integer  "owner_id",                                     null: false
   end
 
   add_index "documents_items", ["document_id", "started_at"], name: "documents_items_idx", using: :btree
@@ -177,6 +182,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",       limit: 100,                 null: false
     t.string   "session_id",       limit: 100,                 null: false
     t.boolean  "main_relation",                default: false
+    t.integer  "owner_id",                                     null: false
   end
 
   add_index "documents_members", ["document_id", "started_at"], name: "documents_members_idx", using: :btree
@@ -197,6 +203,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",           limit: 100,                 null: false
     t.string   "session_id",           limit: 100,                 null: false
     t.boolean  "main_relation",                    default: false
+    t.integer  "owner_id",                                         null: false
   end
 
   add_index "documents_organisations", ["document_id", "started_at"], name: "documents_organisations_idx", using: :btree
@@ -217,6 +224,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",       limit: 100,                 null: false
     t.string   "session_id",       limit: 100,                 null: false
     t.boolean  "main_relation",                default: false
+    t.integer  "owner_id",                                     null: false
   end
 
   add_index "documents_projects", ["document_id", "started_at"], name: "documents_projects_idx", using: :btree
@@ -255,6 +263,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",      limit: 100,                 null: false
     t.string   "session_id",      limit: 100,                 null: false
     t.boolean  "main_relation",               default: false
+    t.integer  "owner_id",                                    null: false
   end
 
   add_index "items_projects", ["item_id", "started_at"], name: "items_projects_idx", using: :btree
@@ -354,6 +363,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",           limit: 100,                 null: false
     t.string   "session_id",           limit: 100,                 null: false
     t.boolean  "main_relation",                    default: false
+    t.integer  "owner_id",                                         null: false
   end
 
   add_index "members_organisations", ["member_id", "started_at"], name: "members_organisations_idx", using: :btree
@@ -374,6 +384,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",      limit: 100,                 null: false
     t.string   "session_id",      limit: 100,                 null: false
     t.boolean  "main_relation",               default: false
+    t.integer  "owner_id",                                    null: false
   end
 
   add_index "members_projects", ["member_id", "started_at"], name: "members_projects_idx", using: :btree
@@ -396,6 +407,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",           limit: 100,                 null: false
     t.string   "session_id",           limit: 100,                 null: false
     t.boolean  "main_relation",                    default: false
+    t.integer  "owner_id",                                         null: false
   end
 
   add_index "opportunities", ["item_id", "started_at"], name: "opportunities_items_idx", using: :btree
@@ -442,6 +454,7 @@ ActiveRecord::Schema.define(version: 20151209144500) do
     t.string   "updated_by",           limit: 100,                 null: false
     t.string   "session_id",           limit: 100,                 null: false
     t.boolean  "main_relation",                    default: false
+    t.integer  "owner_id",                                         null: false
   end
 
   add_index "organisations_projects", ["organisation_id", "started_at"], name: "organisations_projects_idx", using: :btree

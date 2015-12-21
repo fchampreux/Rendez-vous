@@ -20,7 +20,15 @@
 
 FactoryGirl.define do
   factory :organisations_project do
-    
+    organisation_id       0
+    project_id            0
+    started_at            "2015-01-01"
+    status_id             0
+    organisation_role_id  0
+    project_role_id       0
+    created_by            0
+    updated_by            0
+    main_relation         true
   end
 
 end

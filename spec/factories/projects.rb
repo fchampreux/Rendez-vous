@@ -25,6 +25,15 @@
 
 FactoryGirl.define do
   factory :project do
+    id         0
+    name       "Test Project Rails"
+    description "This is a test project used for unit testing"
+    status_id  0
+    owner_id   0
+    country_id 0
+    created_by "Fred"
+    updated_by "Fred"
+    session_id "TestRun-01"
     
   end
 

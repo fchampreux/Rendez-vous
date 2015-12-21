@@ -27,6 +27,7 @@
 
 FactoryGirl.define do
   factory :organisation do
+    id         0
     name       "Test Organisation SA"
     description "This is a test organisation used for unit testing"
     status_id  0
@@ -35,7 +36,7 @@ FactoryGirl.define do
     country_id 0
     created_by "Fred"
     updated_by "Fred"
-    session_id "Run01"
+    session_id "TestRun-01"
   end
 
 end

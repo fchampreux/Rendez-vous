@@ -21,5 +21,21 @@
 require 'rails_helper'
 
 RSpec.describe OrganisationsProject, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Validations'
+  subject {FactoryGirl.build(:organisations_project)}
+  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:owner_id)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)}  
+
+  describe 'It can be created'
+  it 'has a valid factory' do
+    expect(build(:organisations_project)).to be_valid
+  end
+  it 'is invalid without a start_date' do
+    expect(build(:organisations_project, started_at: nil)).to_not be_valid
+  end
+  
 end
