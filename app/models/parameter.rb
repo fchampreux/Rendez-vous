@@ -18,6 +18,7 @@
 #  updated_at         :datetime         not null
 #  user_id            :integer          default(0), not null
 #  language           :string(10)       default("en"), not null
+#  is_user_specific   :boolean
 #
 
 class Parameter < ActiveRecord::Base

@@ -16,6 +16,7 @@
 #  updated_by     :string(100)      not null
 #  session_id     :string(100)      not null
 #  main_relation  :boolean          default(FALSE)
+#  owner_id       :integer          not null
 #
 
 require 'rails_helper'
