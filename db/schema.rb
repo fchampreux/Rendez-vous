@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211093312) do
+ActiveRecord::Schema.define(version: 20160106051629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -472,11 +472,12 @@ ActiveRecord::Schema.define(version: 20151211093312) do
     t.integer  "owner_id"
     t.string   "created_by"
     t.string   "updated_by"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.integer  "user_id",                       default: 0,    null: false
-    t.string   "language",           limit: 10, default: "en", null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "user_id",                        default: 0,    null: false
+    t.string   "language",           limit: 10,  default: "en", null: false
     t.boolean  "is_user_specific"
+    t.string   "session_id",         limit: 100
   end
 
   add_index "parameters", ["code", "user_id", "language"], name: "parameters_idx", unique: true, using: :btree
@@ -488,11 +489,12 @@ ActiveRecord::Schema.define(version: 20151211093312) do
     t.integer  "owner_id"
     t.string   "created_by"
     t.string   "updated_by"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "user_id",                     default: 0,    null: false
-    t.string   "language",         limit: 10, default: "en", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "user_id",                      default: 0,    null: false
+    t.string   "language",         limit: 10,  default: "en", null: false
     t.boolean  "is_user_specific"
+    t.string   "session_id",       limit: 100
   end
 
   add_index "parameters_lists", ["code", "user_id", "language"], name: "parameters_lists_idx", unique: true, using: :btree

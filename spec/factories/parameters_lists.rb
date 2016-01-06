@@ -20,7 +20,7 @@ FactoryGirl.define do
   factory :parameters_list do
     id                 0
     name               "Test parmeters list"
-    code               "TEST_LIST"
+#    code               "TEST_LIST"
     description        "This is a test list used for unit testing"
     owner_id           0
     created_by         "Fred"

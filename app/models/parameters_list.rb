@@ -27,8 +27,8 @@ class ParametersList < ActiveRecord::Base
   validates :language, presence: true
   belongs_to :user
     validates :user, presence:true
-  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name
-    validates :owner, presence: true
+#  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name
+#    validates :owner, presence: true
   has_many :parameters, :dependent => :destroy 
 
 ### private functions definitions
