@@ -19,6 +19,7 @@
 #  user_id            :integer          default(0), not null
 #  language           :string(10)       default("en"), not null
 #  is_user_specific   :boolean
+#  session_id         :string(100)
 #
 
 FactoryGirl.define do
@@ -30,7 +31,11 @@ FactoryGirl.define do
     owner_id           0
     created_by         "Fred"
     updated_by         "Fred"
-    
+    session_id         "Run01-Test"
+    user_id            0
+    code               "TEST"
+    active_from        "2015-12-31"
+    active_to          "2099-12-31"
   end
 
 end
