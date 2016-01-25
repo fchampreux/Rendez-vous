@@ -40,10 +40,18 @@ class Parameter < ActiveRecord::Base
   validates :session_id, presence:true
   belongs_to :parameters_list
 #    validates :parameters_list, presence: true
-  belongs_to :user
+  belongs_to :user                                                                       # helps retrieving the user name         
 #   validates :user, presence:true
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		         # helps retrieving the owner name
+#    validates :owner, presence: true
+
 
 ### private functions definitions
   private
+  
+  ### before filters
+  def set_code 
+    self.code = code.gsub(/[^0-9A-Za-z]/, '_').upcase
+  end 
 
 end

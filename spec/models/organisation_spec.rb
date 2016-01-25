@@ -25,28 +25,29 @@
 #  code        :string(100)
 #
 
-    require 'rails_helper'
-    
-    RSpec.describe Organisation, type: :model do
-    
-      describe 'Validations'
-        context 'With existing parameters and user' do
-        FactoryGirl.build(:parameter)
-        FactoryGirl.build(:user)
-        subject {FactoryGirl.build(:organisation)}
-        it {should validate_presence_of(:name)}
-        it {should validate_length_of(:name).is_at_least(5)}
-        it {should belong_to(:status).class_name('parameter')}
-        it {should belong_to(:legal).class_name('parameter')}  
-        it {should belong_to(:owner).class_name('user')}
-        it {should validate_presence_of(:created_by)}  
-        it {should validate_presence_of(:updated_by)}
-        it {should validate_presence_of(:session_id)}  
-        end
+require 'rails_helper'
+
+RSpec.describe Organisation, type: :model do
+
+  describe 'Validations'
+    context 'With existing parameters and user' do
+    FactoryGirl.build(:parameter)
+    FactoryGirl.build(:user)
+    subject {FactoryGirl.build(:organisation)}
+    it {should validate_presence_of(:name)}
+    it {should validate_length_of(:name).is_at_least(2)}
+    it {should validate_presence_of(:created_by)}  
+    it {should validate_presence_of(:updated_by)}
+    it {should validate_presence_of(:session_id)}  
+    it {should belong_to(:status).class_name('Parameter')}
+    it {should belong_to(:legal).class_name('Parameter')}  
+    it {should belong_to(:owner).class_name('User')}
+    end
     
   describe 'It can be created'
 
   context 'With existing parameters and user' do
+    FactoryGirl.build(:parameters_list)
     FactoryGirl.build(:parameter)
     FactoryGirl.build(:user)
 

@@ -1,0 +1,6 @@
+Créer les contraintes Not Null pour Parameters
+Formater le code pour Parameters sans blanc;limité à 20
+Créer les contraintes FK dans la db
+Vérifier HasMany définitions
+Ajouter les liens vers users pour les objets
+Liens contact-contact et société-société et projet-projet et action-action et item-item

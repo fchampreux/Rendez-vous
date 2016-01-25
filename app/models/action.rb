@@ -24,4 +24,26 @@
 #
 
 class Action < ActiveRecord::Base
+  validates :name,       presence: true, length: { minimum: 5 }
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
+  validates :session_id, presence: true
+  validates :status_id, presence: true
+  validates :mode_id, presence: true  
+  validates :owner_id, presence: true
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		         # helps retrieving the owner name
+#    validates :owner, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
+#    validates :status, presence: true
+  belongs_to :mode, :class_name => "Parameter", :foreign_key => "mode_id"		 # helps retrieving the parameter
+#    validates :legal, presence: true
+  belongs_to :priority, :class_name => "Parameter", :foreign_key => "priority_id"	 # helps retrieving the parameter
+#    validates :legal, presence: true
+
+### relations
+  has_many :members, through: :actions_members
+  has_many :projects, through: :actions_projects
+  has_many :documents, through: :actions_documents
+  has_many :organisations, through: :actions_organisations
+
 end

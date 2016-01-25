@@ -34,19 +34,21 @@ RSpec.describe Member, type: :model do
   describe 'Validations'
   subject {FactoryGirl.build(:member)}
   it {should validate_presence_of(:last_name)}
-  it {should validate_length_of(:last_name).is_at_least(5)}
+  it {should validate_length_of(:last_name).is_at_least(2)}
   it {should validate_presence_of(:status_id)} 
   it {should validate_presence_of(:owner_id)}
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}
+  it {should belong_to(:status).class_name('Parameter')}  
+  it {should belong_to(:owner).class_name('User')}
 
   describe 'It can be created'
   it 'has a valid factory' do
     expect(build(:member)).to be_valid
   end
   it 'is invalid without a name' do
-    expect(build(:member, name: nil)).to_not be_valid
+    expect(build(:member, last_name: nil)).to_not be_valid
   end
  
 end

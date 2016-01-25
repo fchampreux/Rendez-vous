@@ -25,14 +25,16 @@
 
 FactoryGirl.define do
   factory :action do
-    id         0
-    name       "Test Action Rails"
+    id          0
+    name        "Test Action Rails"
     description "This is a test action used for unit testing"
-    status_id  0
-    owner_id   0
-    created_by "Fred"
-    updated_by "Fred"
-    session_id "TestRun-01"
+    status_id   0
+    owner_id    0
+    priority_id 0
+    mode_id     0
+    created_by  "Fred"
+    updated_by  "Fred"
+    session_id  "TestRun-01"
     
   end
 

@@ -36,6 +36,10 @@ RSpec.describe Action, type: :model do
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}
+  it {should belong_to(:status).class_name('Parameter')}
+  it {should belong_to(:mode).class_name('Parameter')}  
+  it {should belong_to(:priority).class_name('Parameter')}  
+  it {should belong_to(:owner).class_name('User')}
 
   describe 'It can be created'
   it 'has a valid factory' do
