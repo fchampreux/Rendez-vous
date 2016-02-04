@@ -41,6 +41,7 @@ RSpec.describe Member, type: :model do
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}
   it {should belong_to(:status).class_name('Parameter')}  
+  it {should belong_to(:country).class_name('Parameter')}  
   it {should belong_to(:owner).class_name('User')}
 
   describe 'It can be created'

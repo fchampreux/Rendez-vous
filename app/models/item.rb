@@ -18,4 +18,23 @@
 #
 
 class Item < ActiveRecord::Base
+### validations
+  validates :name,       presence: true, length: { minimum: 5 }
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
+  validates :session_id, presence: true
+  validates :status_id,  presence: true
+  validates :owner_id,   presence: true
+  validates :code,   presence: true  
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		         # helps retrieving the owner name
+#    validates :owner, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
+#    validates :status, presence: true
+
+### relations
+  has_many :organisations, through: :opportunities
+  has_many :projects, through: :items_projects
+  has_many :documents, through: :items_documents
+  has_many :items, through: :items_items
+
 end

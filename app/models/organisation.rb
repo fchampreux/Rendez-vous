@@ -44,8 +44,9 @@ class Organisation < ActiveRecord::Base
   belongs_to :country, :class_name => "Parameter", :foreign_key => "country_id"		 # helps retrieving the parameter
 
 ### relations
+  has_many :organisations, through: :organisations_organisations
   has_many :members, through: :members_organisations
-  has_many :projects, through: :organisations_projects
+  has_many :projects, through: :projects_organisations
   has_many :documents, through: :documents_organisations
   has_many :actions, through: :actions_organisations
   has_many :items, through: :opportunities

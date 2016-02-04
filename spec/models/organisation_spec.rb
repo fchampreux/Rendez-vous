@@ -31,25 +31,28 @@ RSpec.describe Organisation, type: :model do
 
   describe 'Validations'
     context 'With existing parameters and user' do
-    FactoryGirl.build(:parameter)
-    FactoryGirl.build(:user)
+#    FactoryGirl.build(:parameter)
+#    FactoryGirl.build(:user)
     subject {FactoryGirl.build(:organisation)}
     it {should validate_presence_of(:name)}
     it {should validate_length_of(:name).is_at_least(2)}
     it {should validate_presence_of(:created_by)}  
     it {should validate_presence_of(:updated_by)}
-    it {should validate_presence_of(:session_id)}  
+    it {should validate_presence_of(:session_id)}
+    it {should validate_presence_of(:status_id)}
+    it {should validate_presence_of(:legal_id)}
     it {should belong_to(:status).class_name('Parameter')}
     it {should belong_to(:legal).class_name('Parameter')}  
     it {should belong_to(:owner).class_name('User')}
+    it {should belong_to(:country).class_name('Parameter')}    
     end
     
   describe 'It can be created'
 
   context 'With existing parameters and user' do
-    FactoryGirl.build(:parameters_list)
-    FactoryGirl.build(:parameter)
-    FactoryGirl.build(:user)
+#    FactoryGirl.build(:parameters_list)
+#    FactoryGirl.build(:parameter)
+#    FactoryGirl.build(:user)
 
     it 'has a valid factory' do
       expect(build(:organisation)).to be_valid

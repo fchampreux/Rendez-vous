@@ -38,12 +38,13 @@ class Member < ActiveRecord::Base
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
 #    validates :status, presence: true
+  belongs_to :country, :class_name => "Parameter", :foreign_key => "country_id"		 # helps retrieving the parameter
 
 ### relations
-  has_many :prganisations, through: :members_organisations
-  has_many :projects, through: :members_projects
+  has_many :organisations, through: :members_organisations
+  has_many :projects, through: :projects_members
   has_many :documents, through: :documents_members
   has_many :actions, through: :actions_members
-#  has_many :items, through: :opportunities
+  has_many :members, through: :members_members
 
 end

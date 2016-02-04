@@ -32,7 +32,10 @@ RSpec.describe Document, type: :model do
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}
-
+  it {should belong_to(:media).class_name('Parameter')}
+  it {should belong_to(:owner).class_name('User')}
+  it {should belong_to(:status).class_name('Parameter')}
+  
   describe 'It can be created'
   it 'has a valid factory' do
     expect(build(:document)).to be_valid

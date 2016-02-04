@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111052059) do
+ActiveRecord::Schema.define(version: 20160127143711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,27 +41,6 @@ ActiveRecord::Schema.define(version: 20160111052059) do
   add_index "actions", ["name"], name: "actions_idx_name", using: :btree
   add_index "actions", ["priority_id"], name: "actions_idx_priority", using: :btree
   add_index "actions", ["status_id"], name: "actions_idx_status", using: :btree
-
-  create_table "actions_documents", id: false, force: :cascade do |t|
-    t.integer  "action_id",                                    null: false
-    t.integer  "document_id",                                  null: false
-    t.datetime "started_at",                                   null: false
-    t.datetime "ended_at"
-    t.integer  "status_id",                    default: 0,     null: false
-    t.integer  "action_role_id",                               null: false
-    t.integer  "document_role_id",             default: 0,     null: false
-    t.text     "note"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "created_by",       limit: 100,                 null: false
-    t.string   "updated_by",       limit: 100,                 null: false
-    t.string   "session_id",       limit: 100,                 null: false
-    t.boolean  "main_relation",                default: false
-    t.integer  "owner_id",                                     null: false
-  end
-
-  add_index "actions_documents", ["action_id", "started_at"], name: "actions_documents_idx", using: :btree
-  add_index "actions_documents", ["document_id", "started_at"], name: "documents_actions_idx", using: :btree
 
   create_table "actions_members", id: false, force: :cascade do |t|
     t.integer  "member_id",                                  null: false
@@ -105,27 +84,6 @@ ActiveRecord::Schema.define(version: 20160111052059) do
   add_index "actions_organisations", ["action_id", "started_at"], name: "actions_organisations_idx", using: :btree
   add_index "actions_organisations", ["organisation_id", "started_at"], name: "organisations_actions_idx", using: :btree
 
-  create_table "actions_projects", id: false, force: :cascade do |t|
-    t.integer  "project_id",                                  null: false
-    t.integer  "action_id",                                   null: false
-    t.datetime "started_at",                                  null: false
-    t.datetime "ended_at"
-    t.integer  "status_id",                   default: 0,     null: false
-    t.integer  "project_role_id",                             null: false
-    t.integer  "action_role_id",              default: 0,     null: false
-    t.text     "note"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "created_by",      limit: 100,                 null: false
-    t.string   "updated_by",      limit: 100,                 null: false
-    t.string   "session_id",      limit: 100,                 null: false
-    t.boolean  "main_relation",               default: false
-    t.integer  "owner_id",                                    null: false
-  end
-
-  add_index "actions_projects", ["action_id", "started_at"], name: "actions_projects_idx", using: :btree
-  add_index "actions_projects", ["project_id", "started_at"], name: "projects_actions_idx", using: :btree
-
   create_table "documents", force: :cascade do |t|
     t.string   "name",        limit: 100,             null: false
     t.text     "description"
@@ -145,27 +103,6 @@ ActiveRecord::Schema.define(version: 20160111052059) do
   add_index "documents", ["chrono"], name: "documents_idx_chrono", using: :btree
   add_index "documents", ["code"], name: "documents_idx_code", using: :btree
   add_index "documents", ["name"], name: "documents_idx_name", using: :btree
-
-  create_table "documents_items", id: false, force: :cascade do |t|
-    t.integer  "document_id",                                  null: false
-    t.integer  "item_id",                                      null: false
-    t.datetime "started_at",                                   null: false
-    t.datetime "ended_at"
-    t.integer  "status_id",                    default: 0,     null: false
-    t.integer  "document_role_id",                             null: false
-    t.integer  "item_role_id",                 default: 0,     null: false
-    t.text     "note"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "created_by",       limit: 100,                 null: false
-    t.string   "updated_by",       limit: 100,                 null: false
-    t.string   "session_id",       limit: 100,                 null: false
-    t.boolean  "main_relation",                default: false
-    t.integer  "owner_id",                                     null: false
-  end
-
-  add_index "documents_items", ["document_id", "started_at"], name: "documents_items_idx", using: :btree
-  add_index "documents_items", ["item_id", "started_at"], name: "items_documents_idx", using: :btree
 
   create_table "documents_members", id: false, force: :cascade do |t|
     t.integer  "member_id",                                    null: false
@@ -369,27 +306,6 @@ ActiveRecord::Schema.define(version: 20160111052059) do
   add_index "members_organisations", ["member_id", "started_at"], name: "members_organisations_idx", using: :btree
   add_index "members_organisations", ["organisation_id", "started_at"], name: "organisations_members_idx", using: :btree
 
-  create_table "members_projects", id: false, force: :cascade do |t|
-    t.integer  "member_id",                                   null: false
-    t.integer  "project_id",                                  null: false
-    t.datetime "started_at",                                  null: false
-    t.datetime "ended_at"
-    t.integer  "status_id",                   default: 0,     null: false
-    t.integer  "member_role_id",                              null: false
-    t.integer  "project_role_id",             default: 0,     null: false
-    t.text     "note"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "created_by",      limit: 100,                 null: false
-    t.string   "updated_by",      limit: 100,                 null: false
-    t.string   "session_id",      limit: 100,                 null: false
-    t.boolean  "main_relation",               default: false
-    t.integer  "owner_id",                                    null: false
-  end
-
-  add_index "members_projects", ["member_id", "started_at"], name: "members_projects_idx", using: :btree
-  add_index "members_projects", ["project_id", "started_at"], name: "projects_members_idx", using: :btree
-
   create_table "opportunities", id: false, force: :cascade do |t|
     t.integer  "organisation_id",                                  null: false
     t.integer  "item_id",                                          null: false
@@ -438,27 +354,6 @@ ActiveRecord::Schema.define(version: 20160111052059) do
 
   add_index "organisations", ["code"], name: "organisations_idx_code", using: :btree
   add_index "organisations", ["name"], name: "organisations_idx_name", using: :btree
-
-  create_table "organisations_projects", id: false, force: :cascade do |t|
-    t.integer  "organisation_id",                                  null: false
-    t.integer  "project_id",                                       null: false
-    t.datetime "started_at",                                       null: false
-    t.datetime "ended_at"
-    t.integer  "status_id",                        default: 0,     null: false
-    t.integer  "organisation_role_id",                             null: false
-    t.integer  "project_role_id",                  default: 0,     null: false
-    t.text     "note"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "created_by",           limit: 100,                 null: false
-    t.string   "updated_by",           limit: 100,                 null: false
-    t.string   "session_id",           limit: 100,                 null: false
-    t.boolean  "main_relation",                    default: false
-    t.integer  "owner_id",                                         null: false
-  end
-
-  add_index "organisations_projects", ["organisation_id", "started_at"], name: "organisations_projects_idx", using: :btree
-  add_index "organisations_projects", ["project_id", "started_at"], name: "projects_organisations_idx", using: :btree
 
   create_table "parameters", force: :cascade do |t|
     t.integer  "parameters_list_id"

@@ -42,8 +42,10 @@ class Action < ActiveRecord::Base
 
 ### relations
   has_many :members, through: :actions_members
-  has_many :projects, through: :actions_projects
-  has_many :documents, through: :actions_documents
+  has_many :projects, through: :projects_actions
+  has_many :documents, through: :documents_actions
   has_many :organisations, through: :actions_organisations
+  has_many :actions, through: :actions_actions
+  has_many :users, through: :user_actions
 
 end
