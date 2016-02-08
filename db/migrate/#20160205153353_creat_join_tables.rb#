@@ -1,0 +1,90 @@
+class CreatJoinTables < ActiveRecord::Migration
+  def change
+       
+    create_join_table :organisations, :members, table_name: :members_organisations do |t|
+      t.integer  :organisation_id        , null: false
+      t.integer  :member_id              , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :organisation_role_id   , null: false, default: 0
+      t.integer  :member_role_id         , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+    
+    create_join_table :organisations, :actions, table_name: :actions_organisations do |t|
+      t.integer  :action_id              , null: false
+      t.integer  :organisation_id        , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :organisation_role_id   , null: false, default: 0
+      t.integer  :action_role_id         , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+    
+    create_join_table :actions, :members, table_name: :actions_members do |t|
+      t.integer  :action_id              , null: false
+      t.integer  :member_id              , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :action_role_id         , null: false, default: 0
+      t.integer  :member_role_id         , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+       
+    create_join_table :organisations, :documents, table_name: :documents_organisations do |t|
+      t.integer  :organisation_id        , null: false
+      t.integer  :document_id            , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :organisation_role_id   , null: false, default: 0
+      t.integer  :document_role_id       , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+       
+    create_join_table :documents, :members, table_name: :documents_members do |t|
+      t.integer  :document_id            , null: false
+      t.integer  :member_id              , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :document_role_id       , null: false, default: 0
+      t.integer  :member_role_id         , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+
+    
+    create_join_table :documents, :projects, table_name: :documents_projects do |t|
+      t.integer  :document_id            , null: false
+      t.integer  :project_id             , null: false
+      t.datetime :started_at             , null: false
+      t.datetime :ended_at
+      t.binary   :main_relation          , null: false
+      t.integer  :status_id              , null: false, default: 0
+      t.integer  :document_role_id       , null: false, default: 0
+      t.integer  :project_role_id        , null: false, default: 0
+      t.text     :note                   , limit: 4000
+      
+      t.timestamps null: false
+    end
+
+  end
+end

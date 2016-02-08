@@ -1,0 +1,4 @@
+class CreatJoinTables < ActiveRecord::Migration
+  def change
+  end
+end
