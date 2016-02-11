@@ -1,30 +1,32 @@
 # == Schema Information
 #
-# Table name: actions_documents
+# Table name: documents_actions
 #
-#  action_id        :integer          not null
 #  document_id      :integer          not null
+#  action_id        :integer          not null
 #  started_at       :datetime         not null
 #  ended_at         :datetime
+#  main_relation    :boolean          default(FALSE)
 #  status_id        :integer          default(0), not null
-#  action_role_id   :integer          not null
 #  document_role_id :integer          default(0), not null
+#  action_role_id   :integer          default(0), not null
 #  note             :text
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
 #  created_by       :string(100)      not null
 #  updated_by       :string(100)      not null
 #  session_id       :string(100)      not null
-#  main_relation    :boolean          default(FALSE)
 #  owner_id         :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
+
+
 
 require 'rails_helper'
 
-RSpec.describe ActionsDocument, type: :model do
+RSpec.describe DocumentsAction, type: :model do
   
   describe 'Validations'
-  subject {FactoryGirl.build(:actions_document)}
+  subject {FactoryGirl.build(:documents_action)}
   it {should validate_presence_of(:action_id)}
   it {should validate_presence_of(:document_id)}
   it {should validate_presence_of(:started_at)}
@@ -38,10 +40,10 @@ RSpec.describe ActionsDocument, type: :model do
 
   describe 'It can be created'
   it 'has a valid factory' do
-    expect(build(:actions_document)).to be_valid
+    expect(build(:documents_action)).to be_valid
   end
   it 'is invalid without a start_date' do
-    expect(build(:actions_document, started_at: nil)).to_not be_valid
+    expect(build(:documents_action, started_at: nil)).to_not be_valid
   end
   
 end

@@ -19,5 +19,7 @@
 #  owner_id             :integer          not null
 #
 
+
+
 class DocumentsOrganisation < ActiveRecord::Base
 end

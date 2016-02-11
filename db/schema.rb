@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127143711) do
+ActiveRecord::Schema.define(version: 20160211054855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,27 @@ ActiveRecord::Schema.define(version: 20160127143711) do
   add_index "actions", ["name"], name: "actions_idx_name", using: :btree
   add_index "actions", ["priority_id"], name: "actions_idx_priority", using: :btree
   add_index "actions", ["status_id"], name: "actions_idx_status", using: :btree
+
+  create_table "actions_actions", id: false, force: :cascade do |t|
+    t.integer  "action_id",                                    null: false
+    t.integer  "action_id_1",                                  null: false
+    t.integer  "action_id_2",                                  null: false
+    t.datetime "started_at",                                   null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                default: false
+    t.integer  "status_id",                    default: 0,     null: false
+    t.integer  "action_1_role_id",             default: 0,     null: false
+    t.integer  "action_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",       limit: 100,                 null: false
+    t.string   "updated_by",       limit: 100,                 null: false
+    t.string   "session_id",       limit: 100,                 null: false
+    t.integer  "owner_id",                                     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "actions_actions", ["action_id_1", "action_id_2", "started_at"], name: "actions_actions_idx", using: :btree
 
   create_table "actions_members", id: false, force: :cascade do |t|
     t.integer  "member_id",                                  null: false
@@ -84,6 +105,26 @@ ActiveRecord::Schema.define(version: 20160127143711) do
   add_index "actions_organisations", ["action_id", "started_at"], name: "actions_organisations_idx", using: :btree
   add_index "actions_organisations", ["organisation_id", "started_at"], name: "organisations_actions_idx", using: :btree
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "address_type_id",                         null: false
+    t.string   "address_name",    limit: 100
+    t.text     "address"
+    t.string   "zip",             limit: 20
+    t.string   "city",            limit: 50
+    t.string   "state",           limit: 50
+    t.integer  "country_id",                              null: false
+    t.string   "entity_type",                             null: false
+    t.integer  "entity_id",                               null: false
+    t.string   "created_by",      limit: 100,             null: false
+    t.string   "updated_by",      limit: 100,             null: false
+    t.string   "session_id",      limit: 100,             null: false
+    t.integer  "status_id",                   default: 0
+    t.datetime "active_from",                             null: false
+    t.datetime "active_to"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string   "name",        limit: 100,             null: false
     t.text     "description"
@@ -103,6 +144,48 @@ ActiveRecord::Schema.define(version: 20160127143711) do
   add_index "documents", ["chrono"], name: "documents_idx_chrono", using: :btree
   add_index "documents", ["code"], name: "documents_idx_code", using: :btree
   add_index "documents", ["name"], name: "documents_idx_name", using: :btree
+
+  create_table "documents_actions", id: false, force: :cascade do |t|
+    t.integer  "document_id",                                  null: false
+    t.integer  "action_id",                                    null: false
+    t.datetime "started_at",                                   null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                default: false
+    t.integer  "status_id",                    default: 0,     null: false
+    t.integer  "document_role_id",             default: 0,     null: false
+    t.integer  "action_role_id",               default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",       limit: 100,                 null: false
+    t.string   "updated_by",       limit: 100,                 null: false
+    t.string   "session_id",       limit: 100,                 null: false
+    t.integer  "owner_id",                                     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "documents_actions", ["action_id", "document_id", "started_at"], name: "actions_documents_idx", using: :btree
+  add_index "documents_actions", ["document_id", "action_id", "started_at"], name: "documents_actions_idx", using: :btree
+
+  create_table "documents_documents", id: false, force: :cascade do |t|
+    t.integer  "document_id",                                    null: false
+    t.integer  "document_id_1",                                  null: false
+    t.integer  "document_id_2",                                  null: false
+    t.datetime "started_at",                                     null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                  default: false
+    t.integer  "status_id",                      default: 0,     null: false
+    t.integer  "document_1_role_id",             default: 0,     null: false
+    t.integer  "document_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",         limit: 100,                 null: false
+    t.string   "updated_by",         limit: 100,                 null: false
+    t.string   "session_id",         limit: 100,                 null: false
+    t.integer  "owner_id",                                       null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "documents_documents", ["document_id_1", "document_id_2", "started_at"], name: "documents_documents_idx", using: :btree
 
   create_table "documents_members", id: false, force: :cascade do |t|
     t.integer  "member_id",                                    null: false
@@ -185,6 +268,48 @@ ActiveRecord::Schema.define(version: 20160127143711) do
   add_index "items", ["code"], name: "items_idx_code", using: :btree
   add_index "items", ["name"], name: "items_idx_name", using: :btree
 
+  create_table "items_documents", id: false, force: :cascade do |t|
+    t.integer  "item_id",                                      null: false
+    t.integer  "document_id",                                  null: false
+    t.datetime "started_at",                                   null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                default: false
+    t.integer  "status_id",                    default: 0,     null: false
+    t.integer  "item_role_id",                 default: 0,     null: false
+    t.integer  "document_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",       limit: 100,                 null: false
+    t.string   "updated_by",       limit: 100,                 null: false
+    t.string   "session_id",       limit: 100,                 null: false
+    t.integer  "owner_id",                                     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "items_documents", ["document_id", "item_id", "started_at"], name: "documents_items_idx", using: :btree
+  add_index "items_documents", ["item_id", "document_id", "started_at"], name: "items_documents_idx", using: :btree
+
+  create_table "items_items", id: false, force: :cascade do |t|
+    t.integer  "item_id",                                    null: false
+    t.integer  "item_id_1",                                  null: false
+    t.integer  "item_id_2",                                  null: false
+    t.datetime "started_at",                                 null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",              default: false
+    t.integer  "status_id",                  default: 0,     null: false
+    t.integer  "item_1_role_id",             default: 0,     null: false
+    t.integer  "item_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",     limit: 100,                 null: false
+    t.string   "updated_by",     limit: 100,                 null: false
+    t.string   "session_id",     limit: 100,                 null: false
+    t.integer  "owner_id",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "items_items", ["item_id_1", "item_id_2", "started_at"], name: "items_items_idx", using: :btree
+
   create_table "items_projects", id: false, force: :cascade do |t|
     t.integer  "project_id",                                  null: false
     t.integer  "item_id",                                     null: false
@@ -263,15 +388,6 @@ ActiveRecord::Schema.define(version: 20160127143711) do
     t.string   "mid_name",    limit: 100
     t.string   "last_name",   limit: 100,             null: false
     t.text     "description"
-    t.text     "address"
-    t.string   "zip",         limit: 20
-    t.string   "city",        limit: 100
-    t.string   "state",       limit: 100
-    t.integer  "country_id"
-    t.string   "website",     limit: 100
-    t.string   "email",       limit: 100
-    t.string   "phone",       limit: 100
-    t.string   "mobile",      limit: 100
     t.text     "categories"
     t.integer  "status_id",               default: 0, null: false
     t.integer  "owner_id",                            null: false
@@ -284,6 +400,27 @@ ActiveRecord::Schema.define(version: 20160127143711) do
 
   add_index "members", ["first_name"], name: "members_idx_first_name", using: :btree
   add_index "members", ["last_name"], name: "members_idx_last_name", using: :btree
+
+  create_table "members_members", id: false, force: :cascade do |t|
+    t.integer  "member_id",                                    null: false
+    t.integer  "member_id_1",                                  null: false
+    t.integer  "member_id_2",                                  null: false
+    t.datetime "started_at",                                   null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                default: false
+    t.integer  "status_id",                    default: 0,     null: false
+    t.integer  "member_1_role_id",             default: 0,     null: false
+    t.integer  "member_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",       limit: 100,                 null: false
+    t.string   "updated_by",       limit: 100,                 null: false
+    t.string   "session_id",       limit: 100,                 null: false
+    t.integer  "owner_id",                                     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "members_members", ["member_id_1", "member_id_2", "started_at"], name: "members_members_idx", using: :btree
 
   create_table "members_organisations", id: false, force: :cascade do |t|
     t.integer  "organisation_id",                                  null: false
@@ -332,14 +469,6 @@ ActiveRecord::Schema.define(version: 20160127143711) do
   create_table "organisations", force: :cascade do |t|
     t.string   "name",        limit: 100,             null: false
     t.text     "description"
-    t.text     "address"
-    t.string   "zip",         limit: 20
-    t.string   "city",        limit: 100
-    t.string   "state",       limit: 100
-    t.integer  "country_id"
-    t.string   "website",     limit: 100
-    t.string   "email",       limit: 100
-    t.string   "phone",       limit: 100
     t.text     "categories"
     t.integer  "status_id",               default: 0, null: false
     t.integer  "legal_id",                default: 0, null: false
@@ -354,6 +483,27 @@ ActiveRecord::Schema.define(version: 20160127143711) do
 
   add_index "organisations", ["code"], name: "organisations_idx_code", using: :btree
   add_index "organisations", ["name"], name: "organisations_idx_name", using: :btree
+
+  create_table "organisations_organisations", id: false, force: :cascade do |t|
+    t.integer  "organisation_id",                                    null: false
+    t.integer  "organisation_id_1",                                  null: false
+    t.integer  "organisation_id_2",                                  null: false
+    t.datetime "started_at",                                         null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                      default: false
+    t.integer  "status_id",                          default: 0,     null: false
+    t.integer  "organisation_1_role_id",             default: 0,     null: false
+    t.integer  "organisation_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",             limit: 100,                 null: false
+    t.string   "updated_by",             limit: 100,                 null: false
+    t.string   "session_id",             limit: 100,                 null: false
+    t.integer  "owner_id",                                           null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  add_index "organisations_organisations", ["organisation_id_1", "organisation_id_2", "started_at"], name: "organisations_organistations_idx", using: :btree
 
   create_table "parameters", force: :cascade do |t|
     t.integer  "parameters_list_id"
@@ -394,16 +544,26 @@ ActiveRecord::Schema.define(version: 20160127143711) do
 
   add_index "parameters_lists", ["code", "user_id", "language"], name: "parameters_lists_idx", unique: true, using: :btree
 
+  create_table "phones", force: :cascade do |t|
+    t.integer  "phone_type_id",                         null: false
+    t.string   "phone_name",    limit: 100
+    t.text     "phone"
+    t.integer  "country_id",                            null: false
+    t.string   "entity_type",                           null: false
+    t.integer  "entity_id",                             null: false
+    t.string   "created_by",    limit: 100,             null: false
+    t.string   "updated_by",    limit: 100,             null: false
+    t.string   "session_id",    limit: 100,             null: false
+    t.integer  "status_id",                 default: 0
+    t.datetime "active_from",                           null: false
+    t.datetime "active_to"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",        limit: 100,             null: false
     t.text     "description"
-    t.text     "address"
-    t.string   "zip",         limit: 20
-    t.string   "city",        limit: 100
-    t.string   "state",       limit: 100
-    t.integer  "country_id"
-    t.string   "website",     limit: 100
-    t.string   "email",       limit: 100
     t.text     "categories"
     t.integer  "status_id",               default: 0, null: false
     t.integer  "owner_id",                            null: false
@@ -417,6 +577,90 @@ ActiveRecord::Schema.define(version: 20160127143711) do
 
   add_index "projects", ["code"], name: "projects_idx_code", using: :btree
   add_index "projects", ["name"], name: "projects_idx_name", using: :btree
+
+  create_table "projects_actions", id: false, force: :cascade do |t|
+    t.integer  "project_id",                                  null: false
+    t.integer  "action_id",                                   null: false
+    t.datetime "started_at",                                  null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",               default: false
+    t.integer  "status_id",                   default: 0,     null: false
+    t.integer  "project_role_id",             default: 0,     null: false
+    t.integer  "action_role_id",              default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",      limit: 100,                 null: false
+    t.string   "updated_by",      limit: 100,                 null: false
+    t.string   "session_id",      limit: 100,                 null: false
+    t.integer  "owner_id",                                    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "projects_actions", ["action_id", "project_id", "started_at"], name: "actions_projects_idx", using: :btree
+  add_index "projects_actions", ["project_id", "action_id", "started_at"], name: "projects_actions_idx", using: :btree
+
+  create_table "projects_members", id: false, force: :cascade do |t|
+    t.integer  "project_id",                                  null: false
+    t.integer  "member_id",                                   null: false
+    t.datetime "started_at",                                  null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",               default: false
+    t.integer  "status_id",                   default: 0,     null: false
+    t.integer  "project_role_id",             default: 0,     null: false
+    t.integer  "member_role_id",              default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",      limit: 100,                 null: false
+    t.string   "updated_by",      limit: 100,                 null: false
+    t.string   "session_id",      limit: 100,                 null: false
+    t.integer  "owner_id",                                    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "projects_members", ["member_id", "project_id", "started_at"], name: "members_projects_idx", using: :btree
+  add_index "projects_members", ["project_id", "member_id", "started_at"], name: "projects_members_idx", using: :btree
+
+  create_table "projects_organisations", id: false, force: :cascade do |t|
+    t.integer  "organisation_id",                                  null: false
+    t.integer  "project_id",                                       null: false
+    t.datetime "started_at",                                       null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                    default: false
+    t.integer  "status_id",                        default: 0,     null: false
+    t.integer  "organisation_role_id",             default: 0,     null: false
+    t.integer  "project_role_id",                  default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",           limit: 100,                 null: false
+    t.string   "updated_by",           limit: 100,                 null: false
+    t.string   "session_id",           limit: 100,                 null: false
+    t.integer  "owner_id",                                         null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "projects_organisations", ["organisation_id", "project_id", "started_at"], name: "organistations_projects_idx", using: :btree
+  add_index "projects_organisations", ["project_id", "organisation_id", "started_at"], name: "projects_organistations_idx", using: :btree
+
+  create_table "projects_projects", id: false, force: :cascade do |t|
+    t.integer  "project_id",                                    null: false
+    t.integer  "project_id_1",                                  null: false
+    t.integer  "project_id_2",                                  null: false
+    t.datetime "started_at",                                    null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",                 default: false
+    t.integer  "status_id",                     default: 0,     null: false
+    t.integer  "project_1_role_id",             default: 0,     null: false
+    t.integer  "project_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",        limit: 100,                 null: false
+    t.string   "updated_by",        limit: 100,                 null: false
+    t.string   "session_id",        limit: 100,                 null: false
+    t.integer  "owner_id",                                      null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "projects_projects", ["project_id_1", "project_id_2", "started_at"], name: "projects_projects_idx", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -435,5 +679,91 @@ ActiveRecord::Schema.define(version: 20160127143711) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_actions", id: false, force: :cascade do |t|
+    t.integer  "user_id",                                    null: false
+    t.integer  "action_id",                                  null: false
+    t.datetime "started_at",                                 null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",              default: false
+    t.integer  "status_id",                  default: 0,     null: false
+    t.integer  "user_role_id",               default: 0,     null: false
+    t.integer  "action_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",     limit: 100,                 null: false
+    t.string   "updated_by",     limit: 100,                 null: false
+    t.string   "session_id",     limit: 100,                 null: false
+    t.integer  "owner_id",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "users_actions", ["action_id", "user_id", "started_at"], name: "actions_users_idx", using: :btree
+  add_index "users_actions", ["user_id", "action_id", "started_at"], name: "users_actions_idx", using: :btree
+
+  create_table "users_documents", id: false, force: :cascade do |t|
+    t.integer  "user_id",                                    null: false
+    t.integer  "document_id",                                null: false
+    t.integer  "action_id",                                  null: false
+    t.datetime "started_at",                                 null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",              default: false
+    t.integer  "status_id",                  default: 0,     null: false
+    t.integer  "user_role_id",               default: 0,     null: false
+    t.integer  "action_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",     limit: 100,                 null: false
+    t.string   "updated_by",     limit: 100,                 null: false
+    t.string   "session_id",     limit: 100,                 null: false
+    t.integer  "owner_id",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "users_documents", ["action_id", "user_id", "started_at"], name: "documents_users_idx", using: :btree
+  add_index "users_documents", ["user_id", "action_id", "started_at"], name: "users_documents_idx", using: :btree
+
+  create_table "users_projects", id: false, force: :cascade do |t|
+    t.integer  "user_id",                                    null: false
+    t.integer  "project_id",                                 null: false
+    t.integer  "action_id",                                  null: false
+    t.datetime "started_at",                                 null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",              default: false
+    t.integer  "status_id",                  default: 0,     null: false
+    t.integer  "user_role_id",               default: 0,     null: false
+    t.integer  "action_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",     limit: 100,                 null: false
+    t.string   "updated_by",     limit: 100,                 null: false
+    t.string   "session_id",     limit: 100,                 null: false
+    t.integer  "owner_id",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "users_projects", ["action_id", "user_id", "started_at"], name: "projects_users_idx", using: :btree
+  add_index "users_projects", ["user_id", "action_id", "started_at"], name: "users_projects_idx", using: :btree
+
+  create_table "users_users", id: false, force: :cascade do |t|
+    t.integer  "user_id",                                    null: false
+    t.integer  "user_id_1",                                  null: false
+    t.integer  "user_id_2",                                  null: false
+    t.datetime "started_at",                                 null: false
+    t.datetime "ended_at"
+    t.boolean  "main_relation",              default: false
+    t.integer  "status_id",                  default: 0,     null: false
+    t.integer  "user_1_role_id",             default: 0,     null: false
+    t.integer  "user_2_role_id",             default: 0,     null: false
+    t.text     "note"
+    t.string   "created_by",     limit: 100,                 null: false
+    t.string   "updated_by",     limit: 100,                 null: false
+    t.string   "session_id",     limit: 100,                 null: false
+    t.integer  "owner_id",                                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "users_users", ["user_id_1", "user_id_2", "started_at"], name: "users_users_idx", using: :btree
 
 end

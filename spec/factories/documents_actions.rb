@@ -1,26 +1,26 @@
 # == Schema Information
 #
-# Table name: actions_documents
+# Table name: documents_actions
 #
-#  action_id        :integer          not null
 #  document_id      :integer          not null
+#  action_id        :integer          not null
 #  started_at       :datetime         not null
 #  ended_at         :datetime
+#  main_relation    :boolean          default(FALSE)
 #  status_id        :integer          default(0), not null
-#  action_role_id   :integer          not null
 #  document_role_id :integer          default(0), not null
+#  action_role_id   :integer          default(0), not null
 #  note             :text
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
 #  created_by       :string(100)      not null
 #  updated_by       :string(100)      not null
 #  session_id       :string(100)      not null
-#  main_relation    :boolean          default(FALSE)
 #  owner_id         :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 FactoryGirl.define do
-  factory :actions_document do
+  factory :documents_action do
     action_id         0
     document_id       0
     action_role_id    0
