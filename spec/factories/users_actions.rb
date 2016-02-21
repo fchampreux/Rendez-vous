@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: members_projects
+# Table name: users_actions
 #
-#  member_id       :integer          not null
-#  project_id      :integer          not null
+#  action_id      :integer          not null
+#  user_id         :integer          not null
 #  started_at      :datetime         not null
 #  ended_at        :datetime
 #  status_id       :integer          default(0), not null
-#  member_role_id  :integer          not null
-#  project_role_id :integer          default(0), not null
+#  action_role_id :integer          not null
+#  user_role_id    :integer          default(0), not null
 #  note            :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -20,11 +20,11 @@
 #
 
 FactoryGirl.define do
-  factory :members_project do
-    member_id         0
-    project_id       0
-    member_role_id    0
-    project_role_id  0
+  factory :users_action do
+    action_id         0
+    user_id       0
+    action_role_id    0
+    user_role_id  0
     status_id         0
     owner_id          0
     started_at "2015-01-01" 

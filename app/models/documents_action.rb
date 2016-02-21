@@ -21,4 +21,22 @@
 
 
 class DocumentsAction < ActiveRecord::Base
+
+### validations
+  validates :action_id,       presence: true
+  validates :document_id,       presence: true
+  validates :started_at,      presence: true
+  validates :action_role_id,  presence: true
+  validates :document_role_id,   presence: true
+  validates :status_id,       presence: true
+  validates :owner_id,        presence: true
+  validates :created_by,      presence: true
+  validates :updated_by,      presence: true  
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name
+#    validates :owner, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"	# helps retrieving the parameter
+#    validates :status, presence: true
+  belongs_to :action
+  belongs_to :document
+
 end

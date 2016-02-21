@@ -1,13 +1,13 @@
 # == Schema Information
 #
-# Table name: items_projects
+# Table name: items_actions
 #
-#  project_id      :integer          not null
+#  action_id      :integer          not null
 #  item_id         :integer          not null
 #  started_at      :datetime         not null
 #  ended_at        :datetime
 #  status_id       :integer          default(0), not null
-#  project_role_id :integer          not null
+#  action_role_id :integer          not null
 #  item_role_id    :integer          default(0), not null
 #  note            :text
 #  created_at      :datetime         not null
@@ -19,14 +19,14 @@
 #  owner_id        :integer          not null
 #
 
-class ItemsProject < ActiveRecord::Base
+class UsersAction < ActiveRecord::Base
 
 ### validations
-  validates :project_id,      presence: true
-  validates :item_id,         presence: true
+  validates :action_id,      presence: true
+  validates :user_id,         presence: true
   validates :started_at,      presence: true
-  validates :project_role_id, presence: true
-  validates :item_role_id,    presence: true
+  validates :action_role_id, presence: true
+  validates :user_role_id,    presence: true
   validates :status_id,       presence: true
   validates :owner_id,        presence: true
   validates :created_by,      presence: true
@@ -35,7 +35,7 @@ class ItemsProject < ActiveRecord::Base
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"	# helps retrieving the parameter
 #    validates :status, presence: true
-  belongs_to :project
-  belongs_to :item
+  belongs_to :action
+  belongs_to :user
 
 end

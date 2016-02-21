@@ -19,14 +19,14 @@
 #  owner_id        :integer          not null
 #
 
-class ItemsProject < ActiveRecord::Base
+class UsersProject < ActiveRecord::Base
 
 ### validations
   validates :project_id,      presence: true
-  validates :item_id,         presence: true
+  validates :user_id,         presence: true
   validates :started_at,      presence: true
   validates :project_role_id, presence: true
-  validates :item_role_id,    presence: true
+  validates :user_role_id,    presence: true
   validates :status_id,       presence: true
   validates :owner_id,        presence: true
   validates :created_by,      presence: true
@@ -36,6 +36,6 @@ class ItemsProject < ActiveRecord::Base
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"	# helps retrieving the parameter
 #    validates :status, presence: true
   belongs_to :project
-  belongs_to :item
+  belongs_to :user
 
 end

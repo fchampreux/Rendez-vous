@@ -1,13 +1,13 @@
 # == Schema Information
 #
-# Table name: organisations_projects
+# Table name: projects_users
 #
-#  organisation_id      :integer          not null
+#  project_id      :integer          not null
 #  project_id           :integer          not null
 #  started_at           :datetime         not null
 #  ended_at             :datetime
 #  status_id            :integer          default(0), not null
-#  organisation_role_id :integer          not null
+#  project_role_id :integer          not null
 #  project_role_id      :integer          default(0), not null
 #  note                 :text
 #  created_at           :datetime         not null
@@ -21,22 +21,27 @@
 
 require 'rails_helper'
 
-RSpec.describe OrganisationsProject, type: :model do
+RSpec.describe UsersProject, type: :model do
   
   describe 'Validations'
-  subject {FactoryGirl.build(:organisations_project)}
+  subject {FactoryGirl.build(:users_project)}
+  it {should validate_presence_of(:project_id)}
+  it {should validate_presence_of(:project_id)}
   it {should validate_presence_of(:status_id)}
   it {should validate_presence_of(:owner_id)}
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}  
+  it {should validate_presence_of(:started_at)}
+  it {should validate_presence_of(:project_role_id)}
+  it {should validate_presence_of(:project_role_id)}
 
   describe 'It can be created'
   it 'has a valid factory' do
-    expect(build(:organisations_project)).to be_valid
+    expect(build(:users_project)).to be_valid
   end
   it 'is invalid without a start_date' do
-    expect(build(:organisations_project, started_at: nil)).to_not be_valid
+    expect(build(:users_project, started_at: nil)).to_not be_valid
   end
   
 end

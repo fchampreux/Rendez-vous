@@ -29,7 +29,7 @@ class Member < ActiveRecord::Base
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
 #    validates :status, presence: true
-  belongs_to :country, :class_name => "Parameter", :foreign_key => "country_id"		 # helps retrieving the parameter
+  belongs_to :country, :class_name => "Parameter", :foreign_key => "title_id"		 # helps retrieving the parameter
 
 ### relations
   has_many :organisations, through: :members_organisations

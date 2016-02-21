@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: actions_projects
+# Table name: items_projects
 #
 #  project_id      :integer          not null
-#  action_id       :integer          not null
+#  item_id         :integer          not null
 #  started_at      :datetime         not null
 #  ended_at        :datetime
 #  status_id       :integer          default(0), not null
 #  project_role_id :integer          not null
-#  action_role_id  :integer          default(0), not null
+#  item_role_id    :integer          default(0), not null
 #  note            :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -21,17 +21,16 @@
 
 require 'rails_helper'
 
-RSpec.describe ActionsProject, type: :model do
+RSpec.describe ItemsDocument, type: :model do
   
   describe 'Validations'
-  subject {FactoryGirl.build(:actions_project)}
-  it {should validate_presence_of(:project_id)}
-  it {should validate_presence_of(:action_id)}
+  subject {FactoryGirl.build(:items_document)}
+  it {should validate_presence_of(:document_id)}
+  it {should validate_presence_of(:item_id)}
   it {should validate_presence_of(:started_at)}
   it {should validate_presence_of(:status_id)}
-  it {should validate_presence_of(:project_role_id)}
-  it {should validate_presence_of(:action_role_id)}
-  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:document_role_id)}
+  it {should validate_presence_of(:item_role_id)}
   it {should validate_presence_of(:owner_id)}
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
@@ -39,10 +38,10 @@ RSpec.describe ActionsProject, type: :model do
 
   describe 'It can be created'
   it 'has a valid factory' do
-    expect(build(:actions_project)).to be_valid
+    expect(build(:items_document)).to be_valid
   end
   it 'is invalid without a start_date' do
-    expect(build(:actions_project, started_at: nil)).to_not be_valid
+    expect(build(:items_document, started_at: nil)).to_not be_valid
   end
   
 end
