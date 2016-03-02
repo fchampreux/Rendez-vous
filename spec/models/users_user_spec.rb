@@ -35,6 +35,9 @@ RSpec.describe UsersUser, type: :model do
   it {should validate_presence_of(:started_at)}
   it {should validate_presence_of(:user_1_role_id)} 
   it {should validate_presence_of(:user_2_role_id)}
+  it {should belong_to(:user_1).class_name('User')}
+  it {should belong_to(:user_2).class_name('User')}
+  it {should belong_to(:owner).class_name('User')}  
   
   describe 'It can be created'
   it 'has a valid factory' do

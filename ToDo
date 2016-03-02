@@ -7,3 +7,7 @@ Créer les contraintes FK dans la db
 Créer une classe Adress et extranaliser les adresses
 Documents : changer pour media-type-id, ajouter un URI pour le document stocké
 Items : supprimer Media-id, ajouter des caractéristiques item (unité ?)
+
+Ajouter le status des users, description pour chronos
+links should belong to owner
+phone country mail be null

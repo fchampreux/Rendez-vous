@@ -22,5 +22,25 @@
 require 'rails_helper'
 
 RSpec.describe Phone, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Validations'
+  subject {FactoryGirl.build(:phone)}
+  it {should validate_presence_of(:phone_type_id)}
+#  it {should validate_presence_of(:country_id)} 
+#  it {should validate_presence_of(:owner_id)}
+  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)}
+  it {should validate_presence_of(:active_from)}
+  it {should belong_to(:status).class_name('Parameter')}  
+
+
+  describe 'It can be created'
+  it 'has a valid factory' do
+    expect(build(:phone)).to be_valid
+  end
+  it 'is invalid without a name' do
+    expect(build(:phone, active_from: nil)).to_not be_valid
+  end
 end

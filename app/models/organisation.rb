@@ -4,17 +4,18 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(100)      not null
+#  code        :string(100)
 #  description :text
-#  categories  :text
+#  categories  :string(1000)
+#  tags        :string(1000)
 #  status_id   :integer          default(0), not null
 #  legal_id    :integer          default(0), not null
-#  owner_id    :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  owner_id    :integer          default(0), not null
 #  created_by  :string(100)      not null
 #  updated_by  :string(100)      not null
 #  session_id  :string(100)      not null
-#  code        :string(100)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Organisation < ActiveRecord::Base

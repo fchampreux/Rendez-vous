@@ -3,7 +3,13 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  title_id               :integer          default(0), not null
+#  first_name             :string(100)      not null
+#  last_name              :string(100)      not null
+#  login                  :string(100)      not null
 #  email                  :string           default(""), not null
+#  categories             :string(1000)
+#  tags                   :string(1000)
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime

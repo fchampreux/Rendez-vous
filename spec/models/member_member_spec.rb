@@ -1,27 +1,9 @@
-# == Schema Information
-#
-# Table name: members_projects
-#
-#  member_id      :integer          not null
-#  project_id           :integer          not null
-#  started_at           :datetime         not null
-#  ended_at             :datetime
-#  status_id            :integer          default(0), not null
-#  member_role_id :integer          not null
-#  project_role_id      :integer          default(0), not null
-#  note                 :text
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  created_by           :string(100)      not null
-#  updated_by           :string(100)      not null
-#  session_id           :string(100)      not null
-#  main_relation        :boolean          default(FALSE)
-#  owner_id             :integer          not null
+
 #
 
 require 'rails_helper'
 
-RSpec.describe OrganisationsOrganisation, type: :model do
+RSpec.describe MembersMember, type: :model do
   
   describe 'Validations'
   subject {FactoryGirl.build(:members_member)}
@@ -35,6 +17,10 @@ RSpec.describe OrganisationsOrganisation, type: :model do
   it {should validate_presence_of(:started_at)}
   it {should validate_presence_of(:member_1_role_id)} 
   it {should validate_presence_of(:member_2_role_id)}
+  it {should belong_to(:member_1).class_name('Member')}
+  it {should belong_to(:member_2).class_name('Member')}
+  it {should belong_to(:owner).class_name('User')}  
+
   
   describe 'It can be created'
   it 'has a valid factory' do

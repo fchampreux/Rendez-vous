@@ -21,6 +21,18 @@
 
 FactoryGirl.define do
   factory :phone do
+    id            0
+    phone_name    "Test Phone Rails"
+    phone_type_id 0
+    status_id     0
+#    owner_id     0
+    country_id    0
+    active_from   "2016-01-01"
+    created_by    "Fred"
+    updated_by    "Fred"
+    session_id    "TestRun-01"
+    entity_type   "Organisation"
+    entity_id     0
     
   end
 

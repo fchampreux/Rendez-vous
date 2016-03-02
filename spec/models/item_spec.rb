@@ -2,19 +2,22 @@
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  code        :string(100)      not null
-#  name        :string(100)      not null
-#  description :text
-#  resource    :text
-#  media_id    :integer          default(0), not null
-#  status_id   :integer          default(0), not null
-#  owner_id    :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  created_by  :string(100)      not null
-#  updated_by  :string(100)      not null
-#  session_id  :string(100)      not null
+#  id            :integer          not null, primary key
+#  code          :string(100)      not null
+#  name          :string(100)      not null
+#  description   :text
+#  categories    :string(1000)
+#  tags          :string(1000)
+#  resource      :text
+#  media_type_id :integer          default(0), not null
+#  status_id     :integer          default(0), not null
+#  item_type_id  :integer          default(0), not null
+#  owner_id      :integer          default(0), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  created_by    :string(100)      not null
+#  updated_by    :string(100)      not null
+#  session_id    :string(100)      not null
 #
 
 require 'rails_helper'
@@ -31,6 +34,8 @@ RSpec.describe Item, type: :model do
   it {should validate_presence_of(:created_by)}  
   it {should validate_presence_of(:updated_by)}
   it {should validate_presence_of(:session_id)}
+  it {should belong_to(:owner).class_name('User')}  
+
 
   describe 'It can be created'
   it 'has a valid factory' do

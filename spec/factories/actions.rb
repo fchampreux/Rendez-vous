@@ -5,6 +5,8 @@
 #  id          :integer          not null, primary key
 #  name        :string(100)      not null
 #  description :text
+#  categories  :string(1000)
+#  tags        :string(1000)
 #  planned_at  :datetime
 #  closing_at  :datetime
 #  started_at  :datetime
@@ -14,7 +16,7 @@
 #  priority_id :integer          default(0)
 #  mode_id     :integer          default(0), not null
 #  status_id   :integer          default(0), not null
-#  owner_id    :integer          not null
+#  owner_id    :integer          default(0), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  is_planned  :boolean          default(FALSE)

@@ -23,21 +23,29 @@
 #  updated_at      :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :address, :class => 'Address' do
-    id          0
-    address_type_id 0
-    address_name        "Test Address Rails"
-    status_id   0
-    owner_id    0
-    country_id  0
-    active_from "2016-01-01"
-    created_by  "Fred"
-    updated_by  "Fred"
-    session_id  "TestRun-01"
-    entity_type "Organisation"
-    entity_id   0
-    
+require 'rails_helper'
+
+RSpec.describe Address, type: :model do
+  
+  describe 'Validations'
+  subject {FactoryGirl.build(:address)}
+  it {should validate_presence_of(:address_type_id)}
+#  it {should validate_presence_of(:owner_id)}
+  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:country_id)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)}
+  it {should validate_presence_of(:active_from)}
+  it {should belong_to(:status).class_name('Parameter')}  
+
+
+  describe 'It can be created'
+  it 'has a valid factory' do
+    expect(build(:address)).to be_valid
+  end
+  it 'is invalid without a name' do
+    expect(build(:address, active_from: nil)).to_not be_valid
   end
 
 end

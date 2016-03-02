@@ -4,16 +4,17 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(100)      not null
+#  code        :string(100)
 #  description :text
-#  categories  :text
+#  categories  :string(1000)
+#  tags        :string(1000)
 #  status_id   :integer          default(0), not null
-#  owner_id    :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  owner_id    :integer          default(0), not null
 #  created_by  :string(100)      not null
 #  updated_by  :string(100)      not null
 #  session_id  :string(100)      not null
-#  code        :string(100)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Project < ActiveRecord::Base
@@ -29,7 +30,6 @@ class Project < ActiveRecord::Base
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		# helps retrieving the parameter
 #    validates :status, presence: true
-  belongs_to :country, :class_name => "Parameter", :foreign_key => "country_id"		# helps retrieving the parameter
 
 ### relations
   has_many :members, through: :projects_members

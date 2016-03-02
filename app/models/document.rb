@@ -2,20 +2,24 @@
 #
 # Table name: documents
 #
-#  id          :integer          not null, primary key
-#  name        :string(100)      not null
-#  description :text
-#  resource    :text
-#  media_id    :integer          default(0), not null
-#  status_id   :integer          default(0), not null
-#  owner_id    :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  created_by  :string(100)      not null
-#  updated_by  :string(100)      not null
-#  session_id  :string(100)      not null
-#  code        :string(100)
-#  chrono      :string(100)
+#  id            :integer          not null, primary key
+#  name          :string(100)      not null
+#  code          :string(100)
+#  chrono        :string(100)
+#  description   :text
+#  categories    :string(1000)
+#  tags          :string(1000)
+#  resource      :string(1000)
+#  media_type_id :integer          default(0), not null
+#  chrono_id     :integer          default(0)
+#  is_template   :boolean          default(FALSE)
+#  status_id     :integer          default(0), not null
+#  owner_id      :integer          default(0), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  created_by    :string(100)      not null
+#  updated_by    :string(100)      not null
+#  session_id    :string(100)      not null
 #
 
 class Document < ActiveRecord::Base
@@ -27,12 +31,12 @@ class Document < ActiveRecord::Base
   validates :session_id, presence: true
   validates :status_id,  presence: true
   validates :owner_id,   presence: true
-  validates :media_id,   presence: true  
+  validates :media_type_id,   presence: true  
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		         # helps retrieving the owner name
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
 #    validates :status, presence: true
-  belongs_to :media, :class_name => "Parameter", :foreign_key => "media_id"		 # helps retrieving the parameter
+  belongs_to :media_type, :class_name => "Parameter", :foreign_key => "media_type_id"		 # helps retrieving the parameter
 
 ### relations
   has_many :organisations, through: :documents_organisations

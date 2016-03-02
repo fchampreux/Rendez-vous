@@ -1,22 +1,22 @@
 # == Schema Information
 #
-# Table name: actions_projects
+# Table name: projects_actions
 #
-#  action_id      :integer          not null
-#  project_id           :integer          not null
-#  started_at           :datetime         not null
-#  ended_at             :datetime
-#  status_id            :integer          default(0), not null
-#  action_role_id :integer          not null
-#  project_role_id      :integer          default(0), not null
-#  note                 :text
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  created_by           :string(100)      not null
-#  updated_by           :string(100)      not null
-#  session_id           :string(100)      not null
-#  main_relation        :boolean          default(FALSE)
-#  owner_id             :integer          not null
+#  project_id       :integer          not null
+#  action_id        :integer          not null
+#  started_at       :datetime         not null
+#  ended_at         :datetime
+#  is_main_relation :boolean          default(FALSE)
+#  status_id        :integer          default(0), not null
+#  project_role_id  :integer          default(0), not null
+#  action_role_id   :integer          default(0), not null
+#  note             :text
+#  created_by       :string(100)      not null
+#  updated_by       :string(100)      not null
+#  session_id       :string(100)      not null
+#  owner_id         :integer          default(0), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 require 'rails_helper'
@@ -35,6 +35,9 @@ RSpec.describe ProjectsAction, type: :model do
   it {should validate_presence_of(:started_at)}
   it {should validate_presence_of(:action_role_id)}
   it {should validate_presence_of(:project_role_id)}
+  it {should belong_to(:action).class_name('Action')}
+  it {should belong_to(:project).class_name('Project')}
+  it {should belong_to(:owner).class_name('User')}  
 
   describe 'It can be created'
   it 'has a valid factory' do

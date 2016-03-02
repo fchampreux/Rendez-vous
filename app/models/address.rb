@@ -23,21 +23,17 @@
 #  updated_at      :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :address, :class => 'Address' do
-    id          0
-    address_type_id 0
-    address_name        "Test Address Rails"
-    status_id   0
-    owner_id    0
-    country_id  0
-    active_from "2016-01-01"
-    created_by  "Fred"
-    updated_by  "Fred"
-    session_id  "TestRun-01"
-    entity_type "Organisation"
-    entity_id   0
-    
-  end
-
+class Address < ActiveRecord::Base
+  validates :address_type_id,       presence: true
+  validates :created_by,            presence: true
+  validates :updated_by,            presence: true
+  validates :session_id,            presence: true
+  validates :status_id,             presence: true  
+  validates :country_id,            presence: true
+  validates :active_from,           presence: true
+  validates :owner_id,              presence: true
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		         # helps retrieving the owner name
+#    validates :owner, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"		 # helps retrieving the parameter
+#    validates :status, presence: true
 end
