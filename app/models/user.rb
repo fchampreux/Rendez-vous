@@ -21,6 +21,11 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  status_id              :integer          not null
+#  owner_id               :integer          not null
+#  session_id             :string(100)      not null
+#  created_by             :string(100)      not null
+#  updated_by             :string(100)      not null
 #
 
 class User < ActiveRecord::Base
@@ -31,11 +36,15 @@ class User < ActiveRecord::Base
   validates :title_id,    presence: true
   validates :login,       presence: true, length: { minimum: 5 }
   validates :email,       presence: true, length: { minimum: 5 }
-#  validates :created_by, presence: true
-#  validates :updated_by, presence: true
-#  validates :session_id, presence: true
-#  validates :status_id,  presence: true
-#  validates :owner_id,   presence: true
+  validates :created_by, presence: true
+  validates :updated_by, presence: true
+  validates :session_id, presence: true
+  validates :status_id,  presence: true
+  validates :owner_id,   presence: true  
+  belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name
+#    validates :owner, presence: true
+  belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"	# helps retrieving the parameter
+#    validates :status, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

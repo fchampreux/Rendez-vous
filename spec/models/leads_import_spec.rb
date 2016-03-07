@@ -49,5 +49,18 @@
 require 'rails_helper'
 
 RSpec.describe LeadsImport, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Validations'
+  subject {FactoryGirl.build(:leads_import)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)} 
+
+  describe 'Lead can be created'
+  it 'has a valid factory' do
+    expect(build(:leads_import)).to be_valid
+  end
+  it 'is invalid without a start_date' do
+    expect(build(:leads_import, created_by: nil)).to_not be_valid
+  end
 end

@@ -21,6 +21,11 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  status_id              :integer          not null
+#  owner_id               :integer          not null
+#  session_id             :string(100)      not null
+#  created_by             :string(100)      not null
+#  updated_by             :string(100)      not null
 #
 
 require 'rails_helper'
@@ -33,18 +38,20 @@ RSpec.describe User, type: :model do
   it {should validate_presence_of(:first_name)}
   it {should validate_presence_of(:last_name)}
   it {should validate_presence_of(:login)}
-#  it {should validate_presence_of(:status_id)}
-#  it {should validate_presence_of(:owner_id)}
-#  it {should validate_presence_of(:created_by)}  
-#  it {should validate_presence_of(:updated_by)}
-#  it {should validate_presence_of(:session_id)}
+  it {should validate_presence_of(:status_id)}
+  it {should validate_presence_of(:owner_id)}
+  it {should validate_presence_of(:created_by)}  
+  it {should validate_presence_of(:updated_by)}
+  it {should validate_presence_of(:session_id)}
+  it {should belong_to(:status).class_name('Parameter')}   
+  it {should belong_to(:owner).class_name('User')}
   
   describe 'It can be created'
   it 'has a valid factory' do
     expect(create(:user)).to be_valid
   end
   it 'is invalid without a name' do
-    expect(build(:users, last_name: nil)).to_not be_valid
+    expect(build(:user, last_name: nil)).to_not be_valid
   end
   
 end

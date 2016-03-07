@@ -22,13 +22,14 @@
 class UsersAction < ActiveRecord::Base
 
 ### validations
-  validates :action_id,      presence: true
+  validates :action_id,       presence: true
   validates :user_id,         presence: true
   validates :started_at,      presence: true
-  validates :action_role_id, presence: true
+  validates :action_role_id,  presence: true
   validates :user_role_id,    presence: true
   validates :status_id,       presence: true
   validates :owner_id,        presence: true
+  validates :session_id,      presence: true  
   validates :created_by,      presence: true
   validates :updated_by,      presence: true  
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name

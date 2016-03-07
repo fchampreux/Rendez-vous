@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219163658) do
+ActiveRecord::Schema.define(version: 20160302163438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -724,6 +724,11 @@ ActiveRecord::Schema.define(version: 20160219163658) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.integer  "status_id",                                        null: false
+    t.integer  "owner_id",                                         null: false
+    t.string   "session_id",             limit: 100,               null: false
+    t.string   "created_by",             limit: 100,               null: false
+    t.string   "updated_by",             limit: 100,               null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -753,13 +758,11 @@ ActiveRecord::Schema.define(version: 20160219163658) do
   create_table "users_documents", id: false, force: :cascade do |t|
     t.integer  "user_id",                                      null: false
     t.integer  "document_id",                                  null: false
-    t.integer  "action_id",                                    null: false
     t.datetime "started_at",                                   null: false
     t.datetime "ended_at"
     t.boolean  "is_main_relation",             default: false
     t.integer  "status_id",                    default: 0,     null: false
     t.integer  "user_role_id",                 default: 0,     null: false
-    t.integer  "action_role_id",               default: 0,     null: false
     t.text     "note"
     t.string   "created_by",       limit: 100,                 null: false
     t.string   "updated_by",       limit: 100,                 null: false
@@ -767,21 +770,19 @@ ActiveRecord::Schema.define(version: 20160219163658) do
     t.integer  "owner_id",                     default: 0,     null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.integer  "document_role_id",                             null: false
   end
 
-  add_index "users_documents", ["action_id", "is_main_relation"], name: "documents_users_idx", using: :btree
   add_index "users_documents", ["user_id", "is_main_relation"], name: "users_documents_idx", using: :btree
 
   create_table "users_projects", id: false, force: :cascade do |t|
     t.integer  "user_id",                                      null: false
     t.integer  "project_id",                                   null: false
-    t.integer  "action_id",                                    null: false
     t.datetime "started_at",                                   null: false
     t.datetime "ended_at"
     t.boolean  "is_main_relation",             default: false
     t.integer  "status_id",                    default: 0,     null: false
     t.integer  "user_role_id",                 default: 0,     null: false
-    t.integer  "action_role_id",               default: 0,     null: false
     t.text     "note"
     t.string   "created_by",       limit: 100,                 null: false
     t.string   "updated_by",       limit: 100,                 null: false
@@ -789,9 +790,9 @@ ActiveRecord::Schema.define(version: 20160219163658) do
     t.integer  "owner_id",                     default: 0,     null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.integer  "project_role_id",                              null: false
   end
 
-  add_index "users_projects", ["action_id", "is_main_relation"], name: "projects_users_idx", using: :btree
   add_index "users_projects", ["user_id", "is_main_relation"], name: "users_projects_idx", using: :btree
 
   create_table "users_users", id: false, force: :cascade do |t|

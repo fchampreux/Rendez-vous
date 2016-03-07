@@ -21,6 +21,11 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  status_id              :integer          not null
+#  owner_id               :integer          not null
+#  session_id             :string(100)      not null
+#  created_by             :string(100)      not null
+#  updated_by             :string(100)      not null
 #
 
 FactoryGirl.define do
@@ -29,6 +34,15 @@ FactoryGirl.define do
     email                 "fchampreux@gmail.com"
     password              "abcd1234"
     password_confirmation "abcd1234"
+    title_id              0
+    first_name            "Freddo"
+    last_name             "Testing"
+    login                 "Fred1234"
+    created_by            "Fred"
+    updated_by            "Fred"
+    session_id           "Test Run-01"
+    status_id             0
+    owner_id              0
   end
 
 end

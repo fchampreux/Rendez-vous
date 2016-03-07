@@ -47,4 +47,9 @@
 #
 
 class LeadsImport < ActiveRecord::Base
+  
+### validations  
+  validates :created_by,      presence: true
+  validates :updated_by,      presence: true  
+  validates :session_id,        presence: true
 end

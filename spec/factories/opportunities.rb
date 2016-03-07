@@ -31,8 +31,8 @@ FactoryGirl.define do
     item_id            0
     member_id          0
     organisation_id    0
+    name               "Test opportunity"
     item_role_id            0
-    member_role_id          0
     organisation_role_id    0
     note              "This is a test opportunity used for unit testing"
     status_id          0

@@ -37,7 +37,8 @@ class Opportunity < ActiveRecord::Base
   validates :status_id,             presence: true
   validates :owner_id,              presence: true
   validates :created_by,            presence: true
-  validates :updated_by,            presence: true  
+  validates :updated_by,            presence: true
+  validates :session_id,            presence: true  
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"		# helps retrieving the owner name
 #    validates :owner, presence: true
   belongs_to :status, :class_name => "Parameter", :foreign_key => "status_id"	# helps retrieving the parameter
