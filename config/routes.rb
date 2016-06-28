@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
 #root definition
-  root to: "welcome#home"
+  root to: "welcome#show"
 
-  devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+
+  resources :parameters_lists do
+      resources :parameters
+  end
+  
   resources :leads_imports
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302163438) do
+ActiveRecord::Schema.define(version: 20160311063318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -706,29 +706,33 @@ ActiveRecord::Schema.define(version: 20160302163438) do
   add_index "projects_projects", ["project_2_id", "is_main_relation"], name: "projects_projects_2_idx", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.integer  "title_id",                            default: 0,  null: false
-    t.string   "first_name",             limit: 100,               null: false
-    t.string   "last_name",              limit: 100,               null: false
-    t.string   "login",                  limit: 100,               null: false
-    t.string   "email",                               default: "", null: false
+    t.integer  "title_id",                            default: 0,     null: false
+    t.string   "first_name",             limit: 100,                  null: false
+    t.string   "last_name",              limit: 100,                  null: false
+    t.string   "login",                  limit: 100,                  null: false
+    t.string   "email",                               default: "",    null: false
     t.string   "categories",             limit: 1000
     t.string   "tags",                   limit: 1000
-    t.string   "encrypted_password",                  default: "", null: false
+    t.string   "encrypted_password",                  default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       default: 0,  null: false
+    t.integer  "sign_in_count",                       default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.integer  "status_id",                                        null: false
-    t.integer  "owner_id",                                         null: false
-    t.string   "session_id",             limit: 100,               null: false
-    t.string   "created_by",             limit: 100,               null: false
-    t.string   "updated_by",             limit: 100,               null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.integer  "status_id",                                           null: false
+    t.integer  "owner_id",                                            null: false
+    t.string   "session_id",             limit: 100,                  null: false
+    t.string   "created_by",             limit: 100,                  null: false
+    t.string   "updated_by",             limit: 100,                  null: false
+    t.boolean  "is_admin",                            default: false
+    t.string   "description",            limit: 1000
+    t.date     "active_from",                                         null: false
+    t.date     "active_to",                                           null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

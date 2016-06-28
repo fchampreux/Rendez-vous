@@ -7,11 +7,11 @@
       <div class="col-md-3">
         <nav class="top_menu">
           <ul>
-            <% if signed_in? %>
-              <li> <%= t('User') %> <%= current_login %> </li>
-              <li> <%= link_to t('Sign_out'), signout_path, method: "delete" %></li>
+            <% if user_signed_in? %>
+              <li> <%= t('User') %> <%= current_user.login %> </li>
+              <li> <%= link_to t('Sign_out'), destroy_user_session_path, method: "delete" %></li>
             <% else %>
-              <li> <%= link_to t('Sign_in'), signin_path %></li>
+              <li> <%= link_to t('Sign_in'), user_session_path %></li>
             <% end %>
               <li> <%= link_to t('Help'), "#" %> </li>
           </ul>
@@ -37,8 +37,9 @@
           <nav class="top_menu">
             <ul>
               <li> <%= link_to t('Parameters'), "#"  %></li>
+              <li> <%= link_to t('Tools (queries, templates etc.)'), "#" %> </li>
               <li> <%= link_to t('Help'), "#" %> </li>
-              <% if signed_in? %>
+              <% if current_user.is_admin %>
                 <li> <%= t('Administration')  %> </li>
               <% end %>
 

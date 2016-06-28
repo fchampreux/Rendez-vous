@@ -1,0 +1,9 @@
+<% provide(:title, (t('Managing') + ' ' + t('Settings'))) %>
+
+<% content_for :page_heading do %>
+    <%= t('NewF') + ' ' + t('ListOf') + ' ' + t('Settings') %>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to t('Back'), parameters_lists_path %>
