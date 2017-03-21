@@ -1,0 +1,15 @@
+<% provide(:title, (t('Member'))) %>
+
+<% content_for :short do %>
+<h2>t('Member')</h2>
+
+<div class="row">
+    <div class="col-md-11 col-md-offset-1">
+        <h4><%= member.first_name + member.mid_name + member.last_name %></h4>
+        <%= member.description %>
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
+<% end %>

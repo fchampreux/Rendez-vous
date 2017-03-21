@@ -49,6 +49,7 @@ fr:
   Monitor:        "Processus"
   Notifications:  "Notifications"  
   Notification:   "Notification"
+  Analytics:      "Analyses"
   ### Footer layout
   Credits:        "Crédits"
   License:        "Licence"

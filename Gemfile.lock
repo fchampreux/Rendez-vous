@@ -77,7 +77,6 @@ GEM
     concurrent-ruby (1.0.5)
     d3-rails (4.3.0)
       railties (>= 3.1)
-    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -251,7 +250,6 @@ DEPENDENCIES
   capybara (~> 2.7)
   coffee-rails (~> 4.2)
   d3-rails (~> 4.3)
-  database_cleaner
   devise
   factory_girl_rails (~> 4.7)
   httparty (~> 0.14)

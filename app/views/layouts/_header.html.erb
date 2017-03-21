@@ -1,56 +1,33 @@
 <header>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row">      
+      <div class="col-md-1">
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li> <%= link_to t('Sign_out'), destroy_user_session_path, method: "delete" %> <%= current_user.login %> </li>
+            <% else %>
+              <li> <%= link_to t('Sign_in'), user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-9">
+        <h4> Notifications </h4>
+      </div>
+      <div class="col-md-2">
+        <h4> Search </h4>
+      </div>
+    </div>
+<!--    
+    </div>
+      <div class="row">
       <div class="col-md-9">
         <%= yield(:breadcrums) %>
       </div>
       <div class="col-md-3">
-        <nav class="top_menu">
-          <ul>
-            <% if user_signed_in? %>
-              <li> <%= t('User') %> <%= current_user.login %> </li>
-              <li> <%= link_to t('Sign_out'), destroy_user_session_path, method: "delete" %></li>
-            <% else %>
-              <li> <%= link_to t('Sign_in'), user_session_path %></li>
-            <% end %>
-              <li> <%= link_to t('Help'), "#" %> </li>
-          </ul>
-        </nav>
       </div>
     </div>
-      <div class="row">
-        <div class="col-md-10">
-          <nav class="top_menu">
-            <ul class="nav navbar-nav">
-              <li> <%= link_to t('Today'), "#"  %></li>
-              <li> <%= link_to t('Organisations'), "#"  %></li>
-              <li> <%= link_to t('Members'), "#"  %></li>
-              <li> <%= link_to t('Projects'), "#"  %></li>
-              <li> <%= link_to t('Documents'), "#"  %></li>
-              <li> <%= link_to t('Actions'), "#"  %></li>
-              <li> <%= link_to t('Items'), "#"  %></li>
-              <li> <%= link_to t('Opportunities'), "#"  %></li>
-              <li> <%= link_to t('Statistics'), "#"  %></li>
-          </nav>
-        </div>
-        <div class="col-md-3">
-          <nav class="top_menu">
-            <ul>
-              <li> <%= link_to t('Parameters'), "#"  %></li>
-              <li> <%= link_to t('Tools (queries, templates etc.)'), "#" %> </li>
-              <li> <%= link_to t('Help'), "#" %> </li>
-              <% if true #current_user.is_admin %>
-                <li> <%= t('Administration')  %> </li>
-              <% end %>
-
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="row">
-
-      </div>
-      </div>
-    </div>
+-->
   </div>
 </header>

@@ -33,7 +33,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara', '~> 2.7'
   gem 'factory_girl_rails', '~> 4.7'
-  gem 'database_cleaner'
+#  gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver', '~> 2.53'
 end

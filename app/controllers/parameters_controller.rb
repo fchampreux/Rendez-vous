@@ -8,7 +8,7 @@ class ParametersController < ApplicationController
   # GET /parameters
   # GET /parameters.json
   def index
-    @parameters = Parameter.pgnd(current_playground).all
+    @parameters = Parameter.all
   end
 
   # GET /parameters/1

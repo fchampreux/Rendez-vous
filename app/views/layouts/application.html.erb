@@ -10,8 +10,48 @@
 <body>
   
   <%= render "layouts/header" %>
+  
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1">
+      <h4> Menu </h4>
+      <nav>
+        <ul>
+          <li> <%= link_to t('Parameters'), "#"  %></li>
+          <li> <%= link_to t('Analytics'), "#" %> </li>
+          <% if true #current_user.is_admin %>
+            <li> <%= t('Administration')  %> </li>
+          <% end %>
+          <li> <%= link_to t('Help'), "#" %> </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-md-9">
+      <h4> Synthèse </h4>
+      <%= yield(:short) %>
+    </div>
+    <div class="col-md-2">
+      <h4> Extend </h4>
+      <%= yield(:extend) %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-1">
+      <h4> Icones </h4>
+    </div>
+    <div class="col-md-9">
+      <h4> Main </h4>
+      <%= yield(:main) %>
+    </div>
+    <div class="col-md-2">
+      <h4> Links </h4>
+      <%= yield(:links) %>      
+    </div>
+  </div>
+</div>
 
-<%= yield %>
+
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>

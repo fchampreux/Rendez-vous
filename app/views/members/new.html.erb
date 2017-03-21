@@ -1,0 +1,10 @@
+<% provide(:title, (t('Members'))) %>
+<% content_for :short do %>
+    <%= t('NewMember')%>
+<% end %>
+<% content_for :main do %>
+    <%= render 'form' %>
+    <%= link_to t('Back'), @members %>
+<% end %>
+
+

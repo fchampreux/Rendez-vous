@@ -1,12 +1,38 @@
 <footer>
   <div class="container-fluid">
     <div class="row">
-      <ul>
-	<li><%= link_to image_tag("Rendez-Vous-CRM_114", alt: "Rendez-vous CRM"), 'http://www.55EastMonroe.Software/' %></li>
-	<li><a href="http://www.55EastMonroe.Software/">55 East Monroe Software</a></li>
-	<li><%= link_to " | " + t('Credits'), "#" %></li>
-	<li><%= link_to " | " + t('License'), "#" %></li>
-      </ul>
+      <div class="col-md-1">
+				<%= link_to image_tag("Rendez-Vous-CRM_114", alt: "Rendez-vous CRM"), 'http://www.nohoo.biz/' %>
+      </div>
+      <div class="col-md-9">
+				<ul>
+					<li><a href="http://www.nohoo.biz/">Nohoo.biz</a></li>
+					<li><%= link_to " | " + t('Credits'), "#" %></li>
+					<li><%= link_to " | " + t('License'), "#" %></li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+			</div>
+	  </div>
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-9">
+        <nav>
+          <ul class="nav navbar-nav">
+            <li> <%= link_to t('Today'), "#"  %></li>
+            <li> <%= link_to t('Organisations'), "#"  %></li>
+            <li> <%= link_to t('Members'), members_path  %></li>
+            <li> <%= link_to t('Projects'), "#"  %></li>
+            <li> <%= link_to t('Documents'), "#"  %></li>
+            <li> <%= link_to t('Actions'), "#"  %></li>
+            <li> <%= link_to t('Items'), "#"  %></li>
+            <li> <%= link_to t('Opportunities'), "#"  %></li>
+            <li> <%= link_to t('Statistics'), "#"  %></li>
+        </nav>
+      </div>
+			<div class="col-md-2">
+      </div>
     </div>
   </div>
 </footer>

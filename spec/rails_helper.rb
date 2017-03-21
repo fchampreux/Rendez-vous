@@ -65,7 +65,7 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  #Database_cleaner gem integration (Fred 2015-11-26)
+=begin  #Database_cleaner gem integration (Fred 2015-11-26)
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
@@ -81,6 +81,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+=end
 end
 
 
