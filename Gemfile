@@ -14,7 +14,7 @@ gem 'bootstrap-datepicker-rails', '~> 1.6'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0'
 gem 'sequenced', '~> 3.1'
-gem 'd3-rails', '~> 4.3'
+#gem 'd3-rails', '~> 4.3'
 gem 'httparty', '~> 0.14'
 gem 'iconv'
 #gem 'smarter_csv', '~> 1.1'
@@ -34,7 +34,7 @@ group :development, :test do
   gem 'capybara', '~> 2.7'
   gem 'factory_girl_rails', '~> 4.7'
 #  gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'selenium-webdriver', '~> 2.53'
 end
 
