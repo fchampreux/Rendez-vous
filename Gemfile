@@ -22,11 +22,9 @@ gem 'roo'
 gem 'nested_form_fields'
 gem 'devise'
 gem 'pg'
+# MarkDown parser
+gem 'redcarpet'
 gem 'mailgun-ruby', '~>1.1'
-
-group :doc do
-  gem 'sdoc', '0.3.20', require: false
-end
 
 # gem for dev and test only
 group :development, :test do
