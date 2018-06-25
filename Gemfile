@@ -22,6 +22,7 @@ gem 'roo'
 gem 'nested_form_fields'
 gem 'devise'
 gem 'pg'
+gem 'mailgun-ruby', '~>1.1'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
@@ -32,7 +33,7 @@ group :development, :test do
   gem 'annotate', '~> 2.7'
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara', '~> 2.7'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_bot_rails', '~> 4.8'
 #  gem 'database_cleaner'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'selenium-webdriver', '~> 2.53'
